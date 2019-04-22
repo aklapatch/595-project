@@ -149,6 +149,49 @@ def reduce_hconres_dict(hconres):
   return outputdict
 #-----------------------------------------------------------------
 
+def reduce_s_dict(hconres):
+  outputdict = {}
+  
+  if 'amendment-doc' in hconres:
+    return
+
+  alias = get_alias_dict(hconres)
+
+  if keyin(alias, ['metadata','dublinCore','dc:title']):
+    outputdict['title'] = alias['metadata']['dublinCore']['dc:title']
+
+  elif keyin(alias,['form','official-title','#text']):
+    outputdict['title'] = alias['form']['official-title']['#text']
+
+  if keyin(alias,['metadata','dublinCore','dc:date']):
+    outputdict['date'] = alias['metadata']['dublinCore']['dc:date']
+
+  elif 'action' in alias['form']:
+    if isinstance(alias['form']['action'],list):
+      outputdict['date'] = alias['form']['action'][-1]['action-date']
+    else:  
+      outputdict['date'] = alias['form']['action']['action-date']
+
+  elif 'attestation-group' in alias:
+    outputdict['date'] = alias['attestation']['attestation-group']['attestation-date']['@date']
+
+  if keyin(alias,['engrossed-amendment-body','section','@section-type']):
+    outputdict['status'] = alias['engrossed-amendment-body']['section']['@section-type']
+
+  else:
+    outputdict['status'] = alias['@bill-stage']
+  
+  if keyin(alias,['form','action','action-desc','sponsor','#text']):
+    outputdict['sponsors'] = alias['form']['action']['action-desc']['sponsor']['#text']
+
+  elif keyin(alias,['attestation','attestation-group','attestor','#text']):
+    outputdict['sponsor'] = alias['attestation']['attestation-group']['attestor']['#text']
+
+  outputdict['text'] = get_bill_text_and_headers(alias['legis-body'])
+
+  return outputdict
+#--------------------------------------------------
+
 def dumptojson(inputdict,fname):
   with open(fname,'w') as fp:
     json.dump(inputdict,fp)
