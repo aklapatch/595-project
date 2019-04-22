@@ -1,0 +1,8 @@
+* hjres : house joint resoultion (checked)
+* hconres: house concurrent resoultion (checked)
+* hr: house bills (checked)
+* hres: house resoultion (checked)
+* s: senate bills (checked)
+* sconres: senate congress resoultion (checked)
+* sjres: senate joint resoultion (checked)
+* sres: senate resoultion (checked)

@@ -8,6 +8,5 @@ for file in glob.glob('bills/BILLSXML/*hconres*.xml'):
   with open(file,encoding='utf8') as fd:
     xmldict = xmltodict.parse(fd.read())
     i += 1
-    reducehconres(xmldict)
-
-print(i)
+    print(i)
+    print(reduce_hconres_dict(xmldict))

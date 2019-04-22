@@ -1,110 +1,43 @@
-import requests, xmltodict
-import json
-
-#from mongoWrapper import *
-
-def getXMLfrom(URL):
-  response = requests.get(URL)
-  return xmltodict.parse(response.content)
-# ----------------------------------------------
+import xmltodict,json
 
 # returns inputdict['resolution'] or inputdict['bill'] depending on which one exists
-def getAliasDict(inputdict):
-  if 'resolution' in inputdict:
-    return inputdict['resolution']
+def get_alias_dict(input_dict):
+  if 'resolution' in input_dict:
+    return input_dict['resolution']
   
-  elif 'bill' in inputdict:
-    return inputdict['bill']
-  
+  elif 'bill' in input_dict:
+    return input_dict['bill']
+
+  elif 'amendment-doc' in input_dict:
+    return input_dict['amendment-doc']
+
   return {}
 #end def --------------------------------------
 
 # returns members if the member exists in the dictionary
-def concatif(inputdict,keystr):
-  strin = ""
+def get_str_if_there(input_dict,keyarr):
+  try:
+    if keyarr in input_dict:
+      if isinstance(input_dict[keyarr],str):
+        return  '\n' + input_dict[keyarr] + '\n'
 
-  if isinstance(inputdict, list):
-    for subdict in inputdict:
-      if isinstance(subdict,dict):
-        strin += getTextAndHeader(subdict)
-
-      else:
-        strin+= '\n' + subdict[keystr] + '\n'
-
-  elif keystr in inputdict[keystr]:
-    strin += '\n' + inputdict[keystr] + '\n'
-  return strin
+    return ""
+  except:
+   return ""
 #----------------------------------------------------------
-
-# input the dict['section'] and if there is a subsection, it will grab all the members
-# that have a 'header' or '#text' member
-def getbilltext(inputdict):
-
-  # grab the header
-  billtext = ""
-  if 'header' in inputdict:
-    billtext += '\n' + inputdict['header'] + '\n'
-
-  # concat subsections
-  for sec in inputdict['subsection']:
-    
-    billtext += '\n' + sec['header'] + '\n'
-    billtext += sec['#text'] + '\n'
-
-  return billtext
-#---------------------------------------------------------------
-
-# reduces a dictionary from the govinfo xml so that it fits our schema
-def reduceDict(inputdict):
-  # the top member is named 'resolution' or 'bill'
-  outputdict = {}
-
-  # if  the upper layer is resolution
-  if inputdict['resolution']:
-    # get the name
-    alias = inputdict['resolution']
-    outputdict['title'] = alias['metadata']['dublinCore']['dc:title']
-
-    # if there are multiple sections in the bil
-    if 'subsection' in alias['resolution-body']['section']:
-      bill_sections = alias['resolution-body']['section']['subsection']
-
-      # get and concat all bill text
-      bill_text = ""
-      for subsection in bill_sections:
-        # add \n's for headers
-        bill_text += '\n' + subsection['header'] + '\n'
-
-        if (not isinstance(subsection['text'], str)):
-          bill_text += subsection['text']['#text'] + '\n'
-
-        else:
-          bill_text += subsection['text'] + '\n'
-
-        # end block
-      outputdict['text'] = bill_text
-
-      # end for
-    #end if
-    else: # no subsections to go through
-      outputdict['text'] = alias['resolution-body']['section']['text']
-
-    outputdict ['sponsors'] = inputdict['resolution']['form']['action']['action-desc']['sponsor']['#text']
-
-    outputdict['description'] = inputdict['resolution']['form']['official-title']
-
-    outputdict['status'] = inputdict['resolution']['@resolution-stage']
-
-  # end if
-
-  return outputdict
-#------------------------------------------------------
 
 # returns true if all the keys in string array are in the dict
 # like such inputdict[stringarray[0]][stringarray[1]]....
+# if stringarray is a string, 
 def keyin(inputdict, stringarray):
   # iterate through the keys and see if they match
   tmp = inputdict
+
+  if isinstance(stringarray,str):
+    if stringarray in inputdict:
+      return True
+    else:
+      return False
 
   try:
     for key in stringarray:
@@ -112,53 +45,85 @@ def keyin(inputdict, stringarray):
         tmp = tmp[key]
       else:
         return False
-  except TypeError as err:
+  except TypeError:
     return False
 
   return True
 #------------------------------------------------- 
 
-# checks the section below for a header and #text and concat and return those
-def getTextAndHeader(inputdict):
+# grabs every header and text and #text element 
+# from section, subsections and other key names
+# it is assuming that inputdict = hconres['resolution']['resolution-body']
+def get_bill_text_and_headers(input_dict):
+  # search current layer for text,#text, and header keys
+  # concat to str
+
   outstr = ""
-  if 'header' in inputdict:
-    if isinstance(inputdict['header'],dict):
-      outstr += inputdict['header']['#text']
-    else:
-      outstr += '\n' + inputdict['header'] + '\n'
-    
-  if 'text' in inputdict:
-    if '#text' in inputdict['text']:
-      outstr += inputdict['text']['#text'] + '\n'
-    
-  if '#text' in inputdict:
-    outstr += inputdict['#text']
+  tmp = input_dict
+
+  if isinstance(tmp,str):
+    return tmp
+
+  # do something else if it is a list
+  if isinstance(input_dict,list):
+    for item in input_dict:
+      outstr += get_bill_text_and_headers(item)
+
+  outstr += get_str_if_there(tmp,'header')
+
+  # text is sometimes a dict
+  if 'text' in tmp:
+    outstr += get_bill_text_and_headers(tmp['text'])
+  else:
+    outstr += get_str_if_there(tmp,'text')
+  
+  outstr += get_str_if_there(tmp,'#text')
+
+# words to investigate are paragraph,section,subection, and text
+# division, quoted-block
+
+  try:
+    for key in tmp.keys(): 
+      if 'section' == key:
+        outstr += get_bill_text_and_headers(tmp['section'])
+
+      if 'paragraph' == key:
+        outstr += get_bill_text_and_headers(tmp['paragraph'])
+
+      if 'subsection' == key:
+        outstr += get_bill_text_and_headers(tmp['subsection'])
+
+      if 'division' == key:
+        outstr += get_bill_text_and_headers(tmp['division'])
+
+      if 'quoted-block' == key:
+        outstr += get_bill_text_and_headers(tmp['quoted-block'])
+
+      if 'quote' == key:
+        outstr += get_bill_text_and_headers(tmp['quote'])
+        # more recursion
+        outstr += get_bill_text_and_headers(tmp[key])
+  except:
+    return outstr
   
   return outstr
 
-
 # currently skips amendments
-def reducehconres(hconres):
+def reduce_hconres_dict(hconres):
   outputdict = {}
-  alias = {}
-
-  keystr = ""
-  if 'resolution' in hconres:
-    alias = hconres['resolution']
-    keystr = 'resolution'
-
-  elif 'amendment-doc' in hconres:
-    keystr = 'amendment-doc'
-    alias = hconres['amendment-doc']
+  
+  if 'amendment-doc' in hconres:
     return
 
-  if keyin(alias, ['title-amends','official-title-amendment']):
-    outputdict['title'] = alias['title-amends']['official-title-amendment']
+  alias = get_alias_dict(hconres)
 
-  else:
+  if keyin(alias, ['metadata','dublinCore','dc:title']):
+    outputdict['title'] = alias['metadata']['dublinCore']['dc:title']
+
+  elif keyin(alias,['form','official-title','#text']):
     outputdict['title'] = alias['form']['official-title']['#text']
 
-  if 'dc:date' in alias['metadata']['dublinCore']:
+  if keyin(alias,['metadata','dublinCore','dc:date']):
     outputdict['date'] = alias['metadata']['dublinCore']['dc:date']
 
   elif 'action' in alias['form']:
@@ -173,29 +138,13 @@ def reducehconres(hconres):
   else:
     outputdict['status'] = alias['@resolution-stage']
   
-
   if keyin(alias,['form','action','action-desc','sponsor','#text']):
     outputdict['sponsors'] = alias['form']['action']['action-desc']['sponsor']['#text']
 
   elif keyin(alias,['attestation','attestation-group','attestor','#text']):
     outputdict['sponsor'] = alias['attestation']['attestation-group']['attestor']['#text']
 
-  billtext = ""
-  # get bill text
-  if keyin(alias,['resolution-body','section','subsection']):
-    
-    # foreach through all of the subsections
-    for sec in alias['resolution-body']['section']['subsection']:
-      billtext += '\n' + sec['header'] + '\n'
-      if (isinstance(sec['text'],str)):
-        billtext += sec['text']
-      else:
-        billtext += sec['text']['#text'] + '\n'
-
-  else:
-    billtext = concatif(alias['resolution-body']['section'],'text')
-
-  outputdict['text'] = billtext
+  outputdict['text'] = get_bill_text_and_headers(alias['resolution-body'])
 
   return outputdict
 #-----------------------------------------------------------------
@@ -205,25 +154,3 @@ def dumptojson(inputdict,fname):
     json.dump(inputdict,fp)
 
 # testing starts here -----------------------------------------------------------------------------
-'''
-hjres = getXMLfrom("https://www.govinfo.gov/bulkdata/BILLS/116/1/hjres/BILLS-116hjres10ih.xml")
-
-
-s = getXMLfrom("https://www.govinfo.gov/bulkdata/BILLS/116/1/s/BILLS-116s1000is.xml")
-
-
-hconres = getXMLfrom("https://www.govinfo.gov/bulkdata/BILLS/116/1/hconres/BILLS-116hconres10ih.xml")
-print(reducehconres(hconres))
-
-
-hr = getXMLfrom("https://www.govinfo.gov/bulkdata/BILLS/116/1/hr/BILLS-116hr1000ih.xml")
-
-
-hres = getXMLfrom("https://www.govinfo.gov/bulkdata/BILLS/116/1/hres/BILLS-116hres100ih.xml")
-
-sconres = getXMLfrom("https://www.govinfo.gov/bulkdata/BILLS/116/1/sconres/BILLS-116sconres10is.xml")
-
-sjres = getXMLfrom("https://www.govinfo.gov/bulkdata/BILLS/116/1/sjres/BILLS-116sjres10is.xml")
-
-sres = getXMLfrom("https://www.govinfo.gov/bulkdata/BILLS/116/1/sres/BILLS-116sres100ats.xml")
-'''
