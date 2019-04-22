@@ -20,5 +20,3 @@ do
 		done
 	done
 done
-
-unzip '*.zip' -n -d ./BILLSXML
