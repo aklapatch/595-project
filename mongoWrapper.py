@@ -1,4 +1,4 @@
-
+from bson.objectid import ObjectId
 from pymongo import MongoClient
 import pprint
 import json
@@ -13,6 +13,9 @@ def get_bill_collection(hostname, portnum):
 # mongoCollec
 def insert_bill(billDict, mongoCollec):
   return mongoCollec.insert_one(billDict).inserted_id
+
+def get_bill_from_id(mongo_collection, bill_id):
+  return mongo_collection.find_one({ '_id': ObjectId(bill_id) })
 
 # return bills with matching fields
 def get_matching_bills(mongo_collection, bill_title, bill_date,bill_status, bill_sponsors, bill_text):

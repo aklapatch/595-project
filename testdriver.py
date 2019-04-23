@@ -10,11 +10,18 @@ print("inserting test object\n")
 id = collec.insert_one({'test' : "test text"}).inserted_id
 print("printing inserted bill id: ", id)
 
+found = collec.find_one({'_id': ObjectId(id)})
+
+bill = get_bill_from_id(collec, id)
+print(bill)
+
 # delete it
 print("deleting ",id)
-remove = collec.find_one({ '_id' : id})
-collec.delete_one(remove)
+collec.delete_one(found)
 
-bills = get_matching_bills(collec,'115','','','','')
+found = collec.find_one({'_id': ObjectId(id)})
+print(found)
+
+bills = get_matching_bills(collec,'HCON 105 IH','','','','')
 for bill in bills:
   print_bill(bill)

@@ -16,7 +16,7 @@ do
 		do
 			url="$baseurl/$con/$ses/$house/BILLS-$con-$ses-$house.zip"
 			echo "$url"
-			wget -nc --connect-timeout=1 --dns-timeout=1 --read-timeout=1  $flags $url 
+			wget -nc $flags $url 
 		done
 	done
 done
