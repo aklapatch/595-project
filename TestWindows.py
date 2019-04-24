@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import font as tkfont
+from loginFunctions import *
 
+db_server= r'DESKTOP-F54A5DR\SQLEXPRESS'
+db_database= r"ProjectTEst"
 
 class MenuBar(tk.Menu):
     def __init__(self, parent, controller):
@@ -81,6 +84,56 @@ class SampleApp(tk.Tk):
 
 
 class MainWindow(tk.Frame):
+    
+    def submit_user(self,win,user_name,password):
+        connection = get_database_connection(db_server,db_database)
+        added = add_user(connection.cursor(),user_name,password)
+        if added:
+            win.destroy()
+            added_win = tk.Toplevel(self)
+            added_label =tk.Label(added_win,text="User was added successfully")
+            added_label.pack()
+            close_button = tk.Button(added_win,text="Close",command=lambda: added_win.destroy())
+            close_button.pack()
+        else:
+            err = tk.Toplevel(self)
+            err_label = tk.Label(err,text = "That user is already in the database!")
+            err_label.pack()
+            close_button = tk.Button(err,text="Close",command=lambda: err.destroy())
+            close_button.pack()
+
+    def add_user_win(self):
+        win = tk.Toplevel(self)
+        user_label = tk.Label(win, text="Username: ")
+        pass_label = tk.Label(win, text="Password: ")
+
+        user_entry = tk.Entry(win)
+        pass_entry = tk.Entry(win,show="*")
+        
+        user_label.pack()
+        user_entry.pack()
+
+        pass_label.pack()
+        pass_entry.pack()
+        
+        submit_button = tk.Button(win,text="Submit",command=lambda: self.submit_user(win, user_entry.get(),pass_entry.get()) )
+        submit_button.pack()
+
+    def login(self, username,password):
+        connection = get_database_connection(db_server,db_database)
+
+        if not connection:
+            return False
+        
+        cursor = connection.cursor()
+
+        if not user_login(cursor,username,password):
+            errWin = tk.Toplevel(self)
+            errWin.wm_title("Error!")
+            label = tk.Label(errWin,text="Login Failed, Username or Password were incorrect")
+            label.pack(side='top',fill='both',expand=True)
+            exit_button = tk.Button(errWin,text="Close",command=lambda:errWin.destroy())
+            exit_button.pack()
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -88,6 +141,8 @@ class MainWindow(tk.Frame):
 
         self.menubar = MenuBar(self, parent)
         self.controller.config(menu=self.menubar)
+
+
 
         label = tk.Label(self, text="Federal Database", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
@@ -98,12 +153,16 @@ class MainWindow(tk.Frame):
         label_1 = tk.Label(self, text="Username: ")
         label_2 = tk.Label(self, text="Password: ")
         entry_1 = tk.Entry(self)
-        entry_2 = tk.Entry(self)
+        entry_2 = tk.Entry(self,show="*")
+        login_button = tk.Button(self,text="Login",command=lambda: self.login(entry_1.get(),entry_2.get()))
+        add_user_button = tk.Button(self,text="Add user",command=self.add_user_win)
 
         label_1.pack()
         entry_1.pack()
         label_2.pack()
         entry_2.pack()
+        login_button.pack()
+        add_user_button.pack()
 
         button1 = tk.Button(self, text="Start new test",
                             command=lambda: controller.show_frame("NewTestWindow"))
