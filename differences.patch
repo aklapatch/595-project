@@ -1,0 +1,189 @@
+--- TestWindows.py	2019-04-24 16:42:50.306514400 -0400
++++ TestWindowsDrew.py	2019-04-24 16:35:52.348543700 -0400
+@@ -182,9 +129,43 @@
+         label = tk.Label(self, text="State Info", font=controller.title_font)
+         label.pack(side="top", fill="x", pady=10)
+ 
+-        button = tk.Button(self, text="Go to the start page",
+-                           command=lambda: controller.show_frame("MainWindow"))
+-        button.pack()
++        label_1 = tk.Label(self, text="State Name: ", pady=10)
++        entry_1 = tk.Entry(self)
++
++        button1 = tk.Button(self, text="State Population",
++                            command=lambda: self.StateQueryPop(entry_1.get()))
++        button2 = tk.Button(self, text="State Districts",
++                            command=lambda: self.StateQueryDist(entry_1.get()))
++
++        label_1.pack()
++        entry_1.pack()
++        button1.pack()
++        button2.pack()
++
++    def StateQueryPop(self, txt):
++        sqlString = 'SELECT State.population FROM STATE WHERE State.SName=\'' + txt +'\''
++        cursor.execute(sqlString)
++        list = tk.Listbox(self, height=1, width=40)
++        for row in cursor:
++            pop="population:        "
++            popLabel = txt + pop
++            row=str(row)
++            #list.insert(1, popLabel)
++            list.insert(1, popLabel+row)
++        list.pack()
++
++    def StateQueryDist(self, txt):
++        sqlString = 'SELECT State.disctrictCount FROM STATE WHERE State.SName=\'' + txt + '\''
++        cursor.execute(sqlString)
++        list = tk.Listbox(self, height=1, width=40)
++        for row in cursor:
++            pop = "District Count:    "
++            popLabel = txt + pop
++            row = str(row)
++            # list.insert(1, popLabel)
++            list.insert(1, popLabel + row)
++        list.pack()
++
+ 
+ class PageRepListActive(tk.Frame):
+ 
+@@ -192,9 +173,45 @@
+         tk.Frame.__init__(self, parent)
+         self.controller = controller
+ 
+-        label = tk.Label(self, text="Active Representatives", font=controller.title_font)
++        label = tk.Label(self, text="Representative Info", font=controller.title_font)
+         label.pack(side="top", fill="x", pady=10)
+ 
++        label_1 = tk.Label(self, text="First Name: ", pady=10)
++        label_1.pack()
++
++        entry_1 = tk.Entry(self)
++        entry_1.pack()
++
++        label_2 = tk.Label(self, text="Last Name: ", pady=10)
++        label_2.pack()
++        entry_2 = tk.Entry(self)
++        entry_2.pack()
++
++        button1 = tk.Button(self, text="Current Status",
++                            command=lambda: self.RepQueryActive(entry_1.get(), entry_2.get()))
++
++        button1.pack()
++
++        #sqlString = 'SELECT State.disctrictCount FROM STATE WHERE State.SName=\'' + txt + '\''
++        #cursor.execute(sqlString)
++
++    def RepQueryActive(self, txt1, txt2):
++        sqlString = "SELECT employee.active FROM employee WHERE employee.FNAME = "+"\'"+ txt1 +"\'" + " AND employee.LName = " + "\'"+ txt2 + "\'"
++        print(sqlString)
++        cursor.execute(sqlString)
++        #print(sqlString)
++        list = tk.Listbox(self, height=1, width=40)
++        for row in cursor:
++            if row == 1:
++                active="active"
++                stActive= txt1 + " " + txt2 + " is " + active
++                list.insert(1, stActive)
++            else:
++                notActive="not active"
++                stNotActive= txt1 + " " + txt2 + " is " + notActive
++                list.insert(1, stNotActive)
++        list.pack()
++
+ 
+ class PageRepMajSpkr(tk.Frame):
+ 
+@@ -215,6 +232,7 @@
+         label = tk.Label(self, text="Minority Speaker", font=controller.title_font)
+         label.pack(side="top", fill="x", pady=10)
+ 
++
+ class PageRepBio(tk.Frame):
+ 
+     def __init__(self, parent, controller):
+@@ -264,84 +282,6 @@
+         label = tk.Label(self, text="Senator's Contact Information", font=controller.title_font)
+         label.pack(side="top", fill="x", pady=10)
+ 
+-class BillSearch(tk.Frame):
+-    def __init__(self,parent,controller):
+-        tk.Frame.__init__(self,parent)
+-        self.controller = controller
+-
+-        #set the grid to expand
+-        tk.Grid.columnconfigure(self,1,weight=1)
+-        tk.Grid.rowconfigure(self,5,weight=1)
+-
+-        title_label = tk.Label(self,text="Bill Title:")
+-        title_label.grid(row=0,column=0,stick='w')
+-        title_entry = tk.Entry(self)
+-        title_entry.grid(row=0,column=1,stick='ew')
+-
+-        status_label = tk.Label(self,text="Bill Status:")
+-        status_label.grid(row=1,column=0,sticky='w')
+-        status_entry = tk.Entry(self)
+-        status_entry.grid(row=1,column=1,sticky='ew')
+-        
+-        sponsor_label = tk.Label(self,text="Bill Sponsor:")
+-        sponsor_label.grid(row='2',sticky='w')
+-        sponsor_entry = tk.Entry(self)
+-        sponsor_entry.grid(row='2',column='1',sticky='ew')
+-
+-        date_label = tk.Label(self,text="Bill Date:")
+-        date_label.grid(row='3',sticky='w')
+-        date_entry = tk.Entry(self)
+-        date_entry.grid(row='3',column='1',sticky='ew')
+-
+-        results = tk.Text(self,font=('Calibri',9))
+-
+-        search_title_button = tk.Button(self,text="Search Bill Titles",command =lambda: getBillTitles(results,title_entry.get(),status_entry.get(),sponsor_entry.get(),date_entry.get()))
+-        search_title_button.grid(row=4,column=0)
+-
+-        search_bill_button= tk.Button(self,text="Search Bills",command =lambda: getBillResults(results,title_entry.get(),status_entry.get(),sponsor_entry.get(),date_entry.get()))
+-        search_bill_button.grid(row=4,column=1,stick=tk.W)
+-
+-        results.grid(row=5,column=0,columnspan=2,sticky='news')
+-
+-        text_scroller = tk.Scrollbar(self,command=results.yview)
+-
+-        text_scroller.grid(row=5,column=2,sticky='ens')
+-        results['yscrollcommand'] = text_scroller.set
+-
+-# gets the full text of a bill that matches
+-def getBillResults(text_box,bill_title,bill_status,bill_sponsor,bill_date):
+-    # clear text from dest box
+-    text_box.delete(1.0,tk.END)
+-    print("not done yet")
+-
+-    bill_collection = get_bill_collection('localhost',27017)
+-
+-    matches = get_matching_bills(bill_collection,bill_title,bill_date,bill_status,bill_sponsor,'')
+-    for bill in matches:
+-
+-        
+-        text_box.insert(1.0,bill['text'])
+-        text_box.insert(1.0,'\n\nBill Text:')
+-
+-        text_box.insert(1.0,bill['date'])
+-        text_box.insert(1.0,'\n\nAction Date: ')
+-
+-        text_box.insert(1.0,bill['status'])
+-        text_box.insert(1.0,'\n\nStatus: ')
+-
+-        text_box.insert(1.0,bill['title'])
+-        text_box.insert(1.0,'Bill Title:\n')
+-
+-# returns just the bill title of a bill that matches
+-def getBillTitles(text_box,bill_title,bill_status,bill_sponsor,bill_date):
+-    bill_collection = get_bill_collection('localhost',27017)
+-    # clear text from dest box
+-    text_box.delete(1.0,tk.END)
+-    matches = get_matching_bills(bill_collection,bill_title,bill_date,bill_status,bill_sponsor,'')
+-    for bill in matches:
+-        text_box.insert(1.0,bill['title'])
+-        text_box.insert(1.0,'\n')
+-
+ 
+ if __name__ == "__main__":
+     app = SampleApp()

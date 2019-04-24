@@ -3,8 +3,15 @@ from tkinter import font as tkfont
 from loginFunctions import *
 from mongoWrapper import *
 
-db_server= r'DESKTOP-F54A5DR\SQLEXPRESS'
-db_database= r"ProjectTEst"
+serverName= r'DESKTOP-F54A5DR\SQLEXPRESS'
+dbName= r"ProjectTEst"
+
+msSQLConnection=get_database_connection(serverName, dbName)
+
+cursor = msSQLConnection.cursor()
+#cursor.execute('SELECT * FROM STATE')
+#for row in cursor:
+#    print(row)
 
 class MenuBar(tk.Menu):
     def __init__(self, parent, controller):
@@ -32,7 +39,7 @@ class MenuBar(tk.Menu):
         representativeMenu.add_command(label="Bio", command=lambda: SampleApp().show_frame("PageRepBio"))
         representativeMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageRepContact"))
 
-        # --- Sefnator Submenu ---
+        # --- Senator Submenu ---
         senatorMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Senator", menu=senatorMenu)
         senatorMenu.add_command(label="List Active", command=lambda: SampleApp().show_frame("PageSenListActive"))
@@ -83,7 +90,7 @@ class SampleApp(tk.Tk):
 class MainWindow(tk.Frame):
     
     def submit_user(self,win,user_name,password):
-        connection = get_database_connection(db_server,db_database)
+        connection = get_database_connection(serverName,dbName)
         added = add_user(connection.cursor(),user_name,password)
         if added:
             win.destroy()
@@ -117,7 +124,7 @@ class MainWindow(tk.Frame):
         submit_button.pack()
 
     def login(self, username,password):
-        connection = get_database_connection(db_server,db_database)
+        connection = get_database_connection(serverName,dbName)
 
         if not connection:
             return False
@@ -161,11 +168,6 @@ class MainWindow(tk.Frame):
         login_button.pack()
         add_user_button.pack()
 
-        button1 = tk.Button(self, text="Start new test",
-                            command=lambda: controller.show_frame("NewTestWindow"))
-        button1.pack()
-
-
 class PageStateInfo(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -175,9 +177,43 @@ class PageStateInfo(tk.Frame):
         label = tk.Label(self, text="State Info", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
-        button = tk.Button(self, text="Go to the start page",
-                           command=lambda: controller.show_frame("MainWindow"))
-        button.pack()
+        label_1 = tk.Label(self, text="State Name: ", pady=10)
+        entry_1 = tk.Entry(self)
+
+        button1 = tk.Button(self, text="State Population",
+                            command=lambda: self.StateQueryPop(entry_1.get()))
+        button2 = tk.Button(self, text="State Districts",
+                            command=lambda: self.StateQueryDist(entry_1.get()))
+
+        label_1.pack()
+        entry_1.pack()
+        button1.pack()
+        button2.pack()
+
+    def StateQueryPop(self, txt):
+        sqlString = 'SELECT State.population FROM STATE WHERE State.SName=\'' + txt +'\''
+        cursor.execute(sqlString)
+        list = tk.Listbox(self, height=1, width=40)
+        for row in cursor:
+            pop="population:        "
+            popLabel = txt + pop
+            row=str(row)
+            #list.insert(1, popLabel)
+            list.insert(1, popLabel+row)
+        list.pack()
+
+    def StateQueryDist(self, txt):
+        sqlString = 'SELECT State.disctrictCount FROM STATE WHERE State.SName=\'' + txt + '\''
+        cursor.execute(sqlString)
+        list = tk.Listbox(self, height=1, width=40)
+        for row in cursor:
+            pop = "District Count:    "
+            popLabel = txt + pop
+            row = str(row)
+            # list.insert(1, popLabel)
+            list.insert(1, popLabel + row)
+        list.pack()
+
 
 class PageRepListActive(tk.Frame):
 
@@ -185,8 +221,44 @@ class PageRepListActive(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Active Representatives", font=controller.title_font)
+        label = tk.Label(self, text="Representative Info", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
+ 
+        label_1 = tk.Label(self, text="First Name: ", pady=10)
+        label_1.pack()
+
+        entry_1 = tk.Entry(self)
+        entry_1.pack()
+
+        label_2 = tk.Label(self, text="Last Name: ", pady=10)
+        label_2.pack()
+        entry_2 = tk.Entry(self)
+        entry_2.pack()
+
+        button1 = tk.Button(self, text="Current Status",
+                            command=lambda: self.RepQueryActive(entry_1.get(), entry_2.get()))
+
+        button1.pack()
+
+        #sqlString = 'SELECT State.disctrictCount FROM STATE WHERE State.SName=\'' + txt + '\''
+        #cursor.execute(sqlString)
+
+    def RepQueryActive(self, txt1, txt2):
+        sqlString = "SELECT employee.active FROM employee WHERE employee.FNAME = "+"\'"+ txt1 +"\'" + " AND employee.LName = " + "\'"+ txt2 + "\'"
+        print(sqlString)
+        cursor.execute(sqlString)
+        #print(sqlString)
+        list = tk.Listbox(self, height=1, width=40)
+        for row in cursor:
+            if row == 1:
+                active="active"
+                stActive= txt1 + " " + txt2 + " is " + active
+                list.insert(1, stActive)
+            else:
+                notActive="not active"
+                stNotActive= txt1 + " " + txt2 + " is " + notActive
+                list.insert(1, stNotActive)
+        list.pack()
 
 
 class PageRepMajSpkr(tk.Frame):
