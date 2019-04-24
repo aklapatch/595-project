@@ -31,7 +31,8 @@ class MenuBar(tk.Menu):
         # --- Representative Submenu ---
         representativeMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Representative", menu=representativeMenu)
-        representativeMenu.add_command(label="List Active", command=lambda: SampleApp().show_frame("PageRepListActive"))
+        #representativeMenu.add_command(label="List Active", command=lambda: SampleApp().show_frame("PageRepListActive"))
+        representativeMenu.add_command(label='Search Active',command=lambda:SampleApp().show_frame("PageRepSearchActive") )
         representativeMenu.add_separator()
         representativeMenu.add_command(label="Majority Speaker", command=lambda: SampleApp().show_frame("PageRepMajSpkr"))
         representativeMenu.add_command(label="Minority Speaker", command=lambda: SampleApp().show_frame("PageRepMinSpkr"))
@@ -72,7 +73,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (MainWindow, PageStateInfo, PageRepListActive,
+        for F in (MainWindow, PageStateInfo, PageRepSearchActive,#PageRepListActive,
                   PageRepMajSpkr, PageRepMinSpkr, PageRepBio, PageRepContact,
                   PageSenListActive, PageSenBio, PageSenContact, BillSearch):
             page_name = F.__name__
@@ -123,7 +124,7 @@ class MainWindow(tk.Frame):
         submit_button = tk.Button(win,text="Submit",command=lambda: self.submit_user(win, user_entry.get(),pass_entry.get()) )
         submit_button.pack()
 
-    def login(self, username,password):
+    def login(self,parent, username,password):
         connection = get_database_connection(serverName,dbName)
 
         if not connection:
@@ -138,15 +139,13 @@ class MainWindow(tk.Frame):
             label.pack(side='top',fill='both',expand=True)
             exit_button = tk.Button(errWin,text="Close",command=lambda:errWin.destroy())
             exit_button.pack()
+        else:
+            self.menubar = MenuBar(self, parent)
+            self.controller.config(menu=self.menubar)
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-
-        self.menubar = MenuBar(self, parent)
-        self.controller.config(menu=self.menubar)
-
-
 
         label = tk.Label(self, text="Federal Database", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
@@ -158,7 +157,7 @@ class MainWindow(tk.Frame):
         label_2 = tk.Label(self, text="Password: ")
         entry_1 = tk.Entry(self)
         entry_2 = tk.Entry(self,show="*")
-        login_button = tk.Button(self,text="Login",command=lambda: self.login(entry_1.get(),entry_2.get()))
+        login_button = tk.Button(self,text="Login",command=lambda: self.login(parent,entry_1.get(),entry_2.get()))
         add_user_button = tk.Button(self,text="Add user",command=self.add_user_win)
 
         label_1.pack()
@@ -215,7 +214,7 @@ class PageStateInfo(tk.Frame):
         list.pack()
 
 
-class PageRepListActive(tk.Frame):
+class PageRepSearchActive(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -377,7 +376,6 @@ class BillSearch(tk.Frame):
 def getBillResults(text_box,bill_title,bill_status,bill_sponsor,bill_date):
     # clear text from dest box
     text_box.delete(1.0,tk.END)
-    print("not done yet")
 
     bill_collection = get_bill_collection('localhost',27017)
 
@@ -396,6 +394,7 @@ def getBillResults(text_box,bill_title,bill_status,bill_sponsor,bill_date):
 
         text_box.insert(1.0,bill['title'])
         text_box.insert(1.0,'Bill Title:\n')
+        text_box.insert(1.0,'\n---------------------------------------------------------------------------------------------------------------\n')
 
 # returns just the bill title of a bill that matches
 def getBillTitles(text_box,bill_title,bill_status,bill_sponsor,bill_date):
