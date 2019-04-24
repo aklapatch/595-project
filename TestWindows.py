@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import font as tkfont
 from loginFunctions import *
+from mongoWrapper import *
 
 db_server= r'DESKTOP-F54A5DR\SQLEXPRESS'
 db_database= r"ProjectTEst"
@@ -31,7 +32,7 @@ class MenuBar(tk.Menu):
         representativeMenu.add_command(label="Bio", command=lambda: SampleApp().show_frame("PageRepBio"))
         representativeMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageRepContact"))
 
-        # --- Senator Submenu ---
+        # --- Sefnator Submenu ---
         senatorMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Senator", menu=senatorMenu)
         senatorMenu.add_command(label="List Active", command=lambda: SampleApp().show_frame("PageSenListActive"))
@@ -42,16 +43,13 @@ class MenuBar(tk.Menu):
         # --- Bill Submenu ---
         billMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Bill", menu=billMenu)
-        billMenu.add_command(label="Description", command=doNothing)
-        billMenu.add_command(label="Text", command=doNothing)
-        billMenu.add_command(label="Status", command=doNothing)
+        billMenu.add_command(label="Search Bills", command=lambda:SampleApp().show_frame("BillSearch"))
 
     def onexit(self):
         quit()
 
 def doNothing():
     print("ok ok I won't...")
-
 
 class SampleApp(tk.Tk):
 
@@ -69,7 +67,7 @@ class SampleApp(tk.Tk):
         self.frames = {}
         for F in (MainWindow, PageStateInfo, PageRepListActive,
                   PageRepMajSpkr, PageRepMinSpkr, PageRepBio, PageRepContact,
-                  PageSenListActive, PageSenBio, PageSenContact):
+                  PageSenListActive, PageSenBio, PageSenContact, BillSearch):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -81,7 +79,6 @@ class SampleApp(tk.Tk):
         '''Show a frame for the given page name'''
         frame = self.frames[page_name]
         frame.tkraise()
-
 
 class MainWindow(tk.Frame):
     
@@ -182,7 +179,6 @@ class PageStateInfo(tk.Frame):
                            command=lambda: controller.show_frame("MainWindow"))
         button.pack()
 
-
 class PageRepListActive(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -211,7 +207,6 @@ class PageRepMinSpkr(tk.Frame):
 
         label = tk.Label(self, text="Minority Speaker", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
-
 
 class PageRepBio(tk.Frame):
 
@@ -261,6 +256,84 @@ class PageSenContact(tk.Frame):
 
         label = tk.Label(self, text="Senator's Contact Information", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
+
+class BillSearch(tk.Frame):
+    def __init__(self,parent,controller):
+        tk.Frame.__init__(self,parent)
+        self.controller = controller
+
+        #set the grid to expand
+        tk.Grid.columnconfigure(self,1,weight=1)
+        tk.Grid.rowconfigure(self,5,weight=1)
+
+        title_label = tk.Label(self,text="Bill Title:")
+        title_label.grid(row=0,column=0,stick='w')
+        title_entry = tk.Entry(self)
+        title_entry.grid(row=0,column=1,stick='ew')
+
+        status_label = tk.Label(self,text="Bill Status:")
+        status_label.grid(row=1,column=0,sticky='w')
+        status_entry = tk.Entry(self)
+        status_entry.grid(row=1,column=1,sticky='ew')
+        
+        sponsor_label = tk.Label(self,text="Bill Sponsor:")
+        sponsor_label.grid(row='2',sticky='w')
+        sponsor_entry = tk.Entry(self)
+        sponsor_entry.grid(row='2',column='1',sticky='ew')
+
+        date_label = tk.Label(self,text="Bill Date:")
+        date_label.grid(row='3',sticky='w')
+        date_entry = tk.Entry(self)
+        date_entry.grid(row='3',column='1',sticky='ew')
+
+        results = tk.Text(self,font=('Calibri',9))
+
+        search_title_button = tk.Button(self,text="Search Bill Titles",command =lambda: getBillTitles(results,title_entry.get(),status_entry.get(),sponsor_entry.get(),date_entry.get()))
+        search_title_button.grid(row=4,column=0)
+
+        search_bill_button= tk.Button(self,text="Search Bills",command =lambda: getBillResults(results,title_entry.get(),status_entry.get(),sponsor_entry.get(),date_entry.get()))
+        search_bill_button.grid(row=4,column=1,stick=tk.W)
+
+        results.grid(row=5,column=0,columnspan=2,sticky='news')
+
+        text_scroller = tk.Scrollbar(self,command=results.yview)
+
+        text_scroller.grid(row=5,column=2,sticky='ens')
+        results['yscrollcommand'] = text_scroller.set
+
+# gets the full text of a bill that matches
+def getBillResults(text_box,bill_title,bill_status,bill_sponsor,bill_date):
+    # clear text from dest box
+    text_box.delete(1.0,tk.END)
+    print("not done yet")
+
+    bill_collection = get_bill_collection('localhost',27017)
+
+    matches = get_matching_bills(bill_collection,bill_title,bill_date,bill_status,bill_sponsor,'')
+    for bill in matches:
+
+        
+        text_box.insert(1.0,bill['text'])
+        text_box.insert(1.0,'\n\nBill Text:')
+
+        text_box.insert(1.0,bill['date'])
+        text_box.insert(1.0,'\n\nAction Date: ')
+
+        text_box.insert(1.0,bill['status'])
+        text_box.insert(1.0,'\n\nStatus: ')
+
+        text_box.insert(1.0,bill['title'])
+        text_box.insert(1.0,'Bill Title:\n')
+
+# returns just the bill title of a bill that matches
+def getBillTitles(text_box,bill_title,bill_status,bill_sponsor,bill_date):
+    bill_collection = get_bill_collection('localhost',27017)
+    # clear text from dest box
+    text_box.delete(1.0,tk.END)
+    matches = get_matching_bills(bill_collection,bill_title,bill_date,bill_status,bill_sponsor,'')
+    for bill in matches:
+        text_box.insert(1.0,bill['title'])
+        text_box.insert(1.0,'\n')
 
 
 if __name__ == "__main__":
