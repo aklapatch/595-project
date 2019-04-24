@@ -56,6 +56,7 @@ def user_exists(db_cursor, user_name):
 def add_user(db_cursor,user_name,password):
 
   if user_exists(db_cursor,user_name):
+    print('user already exists')
     return False
 
   sha_hash = hashlib.sha384()
