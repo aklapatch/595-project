@@ -335,7 +335,12 @@ class PageRepMajSpkr(tk.Frame):
 
         label = tk.Label(self, text="Majority Speaker", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
+        sqlString = "Select employee.FName,employee.LName from employee,representative where employee.active = 1 and majoritySpeaker=1 and employee.EmployeeID = representative.EmployeeID"
+        cursor.execute(sqlString)
+        name = cursor.fetchall()
 
+        result_label = tk.Label(self,text=(str(name[0][0]) + " " + str(name[0][1])))
+        result_label.pack()
 
 class PageRepMinSpkr(tk.Frame):
 
@@ -345,6 +350,12 @@ class PageRepMinSpkr(tk.Frame):
 
         label = tk.Label(self, text="Minority Speaker", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
+        sqlString = "Select employee.FName,employee.LName from employee,representative where employee.active = 1 and minoritySpeaker=1 and employee.EmployeeID = representative.EmployeeID"
+        cursor.execute(sqlString)
+        name = cursor.fetchall()
+
+        result_label = tk.Label(self,text=(str(name[0][0]) + " " + str(name[0][1])))
+        result_label.pack()
 
 class PageRepBio(tk.Frame):
 
