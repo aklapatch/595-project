@@ -37,8 +37,9 @@ class MenuBar(tk.Menu):
         representativeMenu.add_command(label="Majority Speaker", command=lambda: SampleApp().show_frame("PageRepMajSpkr"))
         representativeMenu.add_command(label="Minority Speaker", command=lambda: SampleApp().show_frame("PageRepMinSpkr"))
         representativeMenu.add_separator()
+        #representativeMenu.add_command(label="Vote", command=lambda: SampleApp().show_frame("PageRepVoteBill"))
         representativeMenu.add_command(label="Bio", command=lambda: SampleApp().show_frame("PageRepBio"))
-        representativeMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageRepContact"))
+        #representativeMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageRepContact"))
         representativeMenu.add_command(label="Composition",command = lambda: SampleApp().show_frame("PageListComposition") )
 
         # --- Senator Submenu ---
@@ -79,8 +80,8 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         for F in (MainWindow, PageStateInfo, PageRepSearchActive,PageRepListActive,
-                  PageRepMajSpkr, PageRepMinSpkr, PageRepBio, PageRepContact,
-                  PageSenListActive, PageSenBio, PageSenContact,PageListComposition, BillSearch):
+                  PageRepMajSpkr, PageRepMinSpkr, PageRepBio, PageRepContact,#PageRepVoteBill,
+                PageListComposition, BillSearch):
             page_name = F.__name__
             self.current_frame = F(parent=container, controller=self)
             self.frames[page_name] = self.current_frame
@@ -185,40 +186,64 @@ class PageStateInfo(tk.Frame):
         label_1 = tk.Label(self, text="State Name: ", pady=10)
         entry_1 = tk.Entry(self)
 
-        button1 = tk.Button(self, text="State Population",
-                            command=lambda: self.StateQueryPop(entry_1.get()))
-        button2 = tk.Button(self, text="State Districts",
-                            command=lambda: self.StateQueryDist(entry_1.get()))
-
+        button1 = tk.Button(self, text="Search",
+                            command=lambda: self.StateQuery(entry_1.get()))
         label_1.pack()
         entry_1.pack()
         button1.pack()
-        button2.pack()
 
-    def StateQueryPop(self, txt):
-        sqlString = 'SELECT State.population FROM STATE WHERE State.SName=\'' + txt +'\''
+    def StateQuery(self, txt):
+        sqlString = 'SELECT count(State.SName) FROM STATE WHERE State.SName like \'' + txt + '%\''
+        
         cursor.execute(sqlString)
-        list = tk.Listbox(self, height=1, width=40)
-        for row in cursor:
-            pop="population:        "
-            popLabel = txt + pop
-            row=str(row)
-            #list.insert(1, popLabel)
-            list.insert(1, popLabel+row)
-        list.pack()
 
-    def StateQueryDist(self, txt):
-        sqlString = 'SELECT State.disctrictCount FROM STATE WHERE State.SName=\'' + txt + '\''
+        rows = cursor.fetchall()
+        
+        if rows[0][0] == 0 or rows[0][0] > 1:
+            err_label = ""
+            if rows[0][0] == 0:
+                err_label = "No matching state found!"
+            else:
+                err_label = "Found more than one mathing state.\n Please search with more characters to narrow your results!"
+
+            # spawn error Window
+            err = tk.Toplevel(self)
+            err_label = tk.Label(err,text = err_label)
+            err_label.pack()
+            close_button = tk.Button(err,text="Close",command=lambda: err.destroy())
+            close_button.pack()
+            return
+
+        sqlString = 'SELECT State.disctrictCount FROM STATE WHERE State.SName like \'' + txt + '%\''
         cursor.execute(sqlString)
-        list = tk.Listbox(self, height=1, width=40)
-        for row in cursor:
+
+        rows = cursor.fetchall()
+
+        sqlString = 'SELECT State.population FROM STATE WHERE State.SName like \'' + txt + '%\''
+        cursor.execute(sqlString)
+
+        pop_rows = cursor.fetchall()
+
+        sqlString = sqlString = 'SELECT State.SName FROM STATE WHERE State.SName like \'' + txt + '%\''
+
+        cursor.execute(sqlString)
+
+        state_name = cursor.fetchall()
+
+        list = tk.Listbox(self, height=2, width=40)
+        for row in rows:
             pop = "District Count:    "
-            popLabel = txt + pop
-            row = str(row)
+            popLabel = state_name[0][0] + " " + pop
+            row = str(row[0])
             # list.insert(1, popLabel)
-            list.insert(1, popLabel + row)
-        list.pack()
+            list.insert(tk.END, popLabel + row)
 
+        for row in pop_rows:
+            pop = "Population:    "
+            popLabel = state_name[0][0] + " " + pop
+            result = str(row[0])
+            list.insert(tk.END, popLabel + result)
+        list.pack()
 
 class PageRepSearchActive(tk.Frame):
 
@@ -249,21 +274,25 @@ class PageRepSearchActive(tk.Frame):
         #cursor.execute(sqlString)
 
     def RepQueryActive(self, txt1, txt2):
-        sqlString = "SELECT employee.active FROM employee WHERE employee.FNAME = "+"\'"+ txt1 +"\'" + " AND employee.LName = " + "\'"+ txt2 + "\'"
-        print(sqlString)
-        cursor.execute(sqlString)
-        #print(sqlString)
-        list = tk.Listbox(self, height=1, width=40)
-        for row in cursor:
-            if row == 1:
-                active="active"
-                stActive= txt1 + " " + txt2 + " is " + active
-                list.insert(1, stActive)
-            else:
-                notActive="not active"
-                stNotActive= txt1 + " " + txt2 + " is " + notActive
-                list.insert(1, stNotActive)
-        list.pack()
+        sqlString = "SELECT employee.active FROM employee WHERE employee.FName like "+"\'"+ txt1 +"%\'" + " AND employee.LName like " + "\'"+ txt2 + "%\';"   
+        result = query_cursor(sqlString,cursor)
+
+        if len(result) == 1:
+            sqlString = "SELECT fname,lname FROM employee WHERE employee.FName like "+"\'"+ txt1 +"%\'" + " AND employee.LName like " + "\'"+ txt2 + "%\';"   
+            rep_name = query_cursor(sqlString,cursor)
+            rep_name = rep_name[0][0] + " " + rep_name[0][1]
+
+            list = tk.Listbox(self, height=1, width=40)
+            for row in result:
+                if row[0] == True:
+                    active_label= rep_name + " is active"
+                else:
+                    active_label= rep_name+ " is not active"
+
+                list.insert(1, active_label)
+            list.pack()
+        else:
+            print("in progress")
 
 class PageRepListActive(tk.Frame):
 
@@ -290,8 +319,6 @@ class PageRepListActive(tk.Frame):
         for row in cursor:
             results.insert(1.0,row[0] + " " + row[1] + "\n")
 
-
-
 # TODO: add a button that converts to percentage
 class PageListComposition(tk.Frame):
 
@@ -313,10 +340,10 @@ class PageListComposition(tk.Frame):
 
         results.delete(1.0,tk.END)
         
-        sqlString = "Select count(employeeID) from employee where active = 1"
+        sqlString = "Select count(employeeID) from employee where active=1"
         cursor.execute(sqlString)
         total_reps = cursor.fetchall()
-        sqlString = "Select count(employeeID) from employee where active = 1 AND   partyAffiliation = \'R\'"
+        sqlString = "Select count(employeeID) from employee where active=1 AND  partyAffiliation = \'R\'"
         cursor.execute(sqlString)
         total_repubs = cursor.fetchall()
 
@@ -324,8 +351,14 @@ class PageListComposition(tk.Frame):
         cursor.execute(sqlString)
         total_dems = cursor.fetchall()
 
+        sqlString = "Select count(employeeID) from employee where active = 1 AND NOT(partyAffiliation = \'D\') and NOT(partyAffiliation = \'R\')"
+        cursor.execute(sqlString)
+        total_ind = cursor.fetchall()
+        
+
         results.insert(1.0,"Number of Republican Representatives is " + str(total_repubs[0][0]) + " out of "+ str(total_reps[0][0]) + "\n")
         results.insert(1.0,"Number of Democrat Representatives is " + str(total_dems[0][0]) + " out of " + str(total_reps[0][0]) + "\n")
+        results.insert(1.0,"Number of Independent Representatives is " + str(total_ind[0][0]) + " out of " + str(total_reps[0][0]) + "\n")
 
 class PageRepMajSpkr(tk.Frame):
 
@@ -339,7 +372,7 @@ class PageRepMajSpkr(tk.Frame):
         cursor.execute(sqlString)
         name = cursor.fetchall()
 
-        result_label = tk.Label(self,text=(str(name[0][0]) + " " + str(name[0][1])))
+        result_label = tk.Label(self,text=(str(name[0][0]) + " " + str(name[0][1])) )
         result_label.pack()
 
 class PageRepMinSpkr(tk.Frame):
@@ -353,9 +386,66 @@ class PageRepMinSpkr(tk.Frame):
         sqlString = "Select employee.FName,employee.LName from employee,representative where employee.active = 1 and minoritySpeaker=1 and employee.EmployeeID = representative.EmployeeID"
         cursor.execute(sqlString)
         name = cursor.fetchall()
-
         result_label = tk.Label(self,text=(str(name[0][0]) + " " + str(name[0][1])))
         result_label.pack()
+
+class PageRepVoteBill(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+
+        label = tk.Label(self, text="Representative Vote Status", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+
+        label_1 = tk.Label(self, text="First Name: ", pady=10)
+        label_1.pack()
+        entry_1 = tk.Entry(self)
+        entry_1.pack()
+
+        label_2 = tk.Label(self, text="Last Name: ", pady=10)
+        label_2.pack()
+        entry_2 = tk.Entry(self)
+        entry_2.pack()
+
+        label_3 = tk.Label(self, text="Name of Bill: ", pady=10)
+        label_3.pack()
+        entry_3 = tk.Entry(self)
+        entry_3.pack()
+
+        results = tk.Text(self,font=('Calibri',8))
+
+        button1 = tk.Button(self, text="Vote Status",
+                            command=lambda: self.RepQueryVote(results,entry_1.get(), entry_2.get(), entry_3.get()))
+
+        button1.pack()
+
+        text_scroller = tk.Scrollbar(self,command=results.yview)
+        text_scroller.pack(side='right',anchor='e',fill='y',expand=1)
+
+        results.pack(expand=1,fill='both')
+
+        results['yscrollcommand'] = text_scroller.set
+
+    # search for a title in mongodb that matches the bill name, then take that id
+    # and search for a vote with that.
+    def RepQueryVote(self,result_box, first_name, last_name, bill_name):
+        result_box.delete(1.0,tk.END)
+
+        # search for bills that person has voted on, instead of their vote
+        if bill_name =='':
+            sql = "select employeeID from employee where lname like \'"+last_name+"%\' and fname like\'" + first_name + "%\';"
+            cursor.execute(sql)
+            results = cursor.fetchall()
+            
+            if len(results) == 1:
+                person_id = results[0][0]
+                sql = "select billID,stat from vote where employeeID=" + str(person_id) + ";"
+                results = query_cursor(sql,cursor)
+
+                # insert results into the results box
+                for row in results:
+                    results.insert(row,tk.END)
 
 class PageRepBio(tk.Frame):
 
@@ -363,9 +453,50 @@ class PageRepBio(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Representative's Bio", font=controller.title_font)
+        label = tk.Label(self, text="Representative Bio", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
+ 
+        label_1 = tk.Label(self, text="First Name: ", pady=10)
+        label_1.pack()
 
+        entry_1 = tk.Entry(self)
+        entry_1.pack()
+
+        label_2 = tk.Label(self, text="Last Name: ", pady=10)
+        label_2.pack()
+        entry_2 = tk.Entry(self)
+        entry_2.pack()
+
+        text_box = tk.Listbox(self, height=8, width=40)
+
+        button1 = tk.Button(self, text="Current Status",
+                            command=lambda: self.RepQueryActive(text_box,entry_1.get(), entry_2.get()))
+
+        button1.pack()
+        
+
+    def RepQueryActive(self,text_list, txt1, txt2):
+        text_list.delete(0,tk.END)
+        sqlString = "SELECT employee.active FROM employee WHERE employee.FName like "+"\'"+ txt1 +"%\'" + " AND employee.LName like " + "\'"+ txt2 + "%\';"   
+        result = query_cursor(sqlString,cursor)
+
+        if len(result) == 1:
+            sqlString = "SELECT fname,lname,dob,partyAffiliation,phoneNum,email,occupation FROM employee WHERE employee.FName like "+"\'"+ txt1 +"%\'" + " AND employee.LName like " + "\'"+ txt2 + "%\';"   
+            rep_info = query_cursor(sqlString,cursor)
+            rep_name = rep_info[0][0] + " " + rep_info[0][1]
+            rep = rep_info[0]
+
+            text_list = tk.Listbox(self, height=8, width=40)
+            
+            text_list.insert(tk.END, "Name:              " + rep_name)
+            text_list.insert(tk.END,"Date of Birth:        " + str(rep[2]))
+            text_list.insert(tk.END,"Party Affiliation:     " + str(rep[3]))
+            text_list.insert(tk.END,"Phone Number:     " + str(rep[4]))
+            text_list.insert(tk.END,"Email                 " + str(rep[5]))
+            text_list.insert(tk.END,"Occupation:       " + str(rep[6]))
+            text_list.pack()
+        else:
+            print("Could not find a representative with that entry combination")
 
 class PageRepContact(tk.Frame):
 

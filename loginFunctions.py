@@ -53,6 +53,13 @@ def user_exists(db_cursor, user_name):
   else:
     return False
 
+def query_cursor(query_str,cursor):
+  try:
+    cursor.execute(query_str)
+    return cursor.fetchall()
+  except:
+    return -1
+
 def add_user(db_cursor,user_name,password):
 
   if user_exists(db_cursor,user_name):

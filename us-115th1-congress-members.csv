@@ -1,0 +1,608 @@
+Name,DOB,,Party,,,State Code,Active,Occupation,Us Start date,District
+"Palmer, Gary J.",1990-01-01,M,Republican,1234534567,pal@gmail.com,01,1,Engineer,1990-01-01,06
+"Sessions, Jeff",1990-01-02,M,Republican,1234534568,ses@gmail.com,01,1,Engineer,1990-01-02,00
+"Shelby, Richard C.",1990-01-03,M,Republican,1234534569,she@gmail.com,01,1,Doctor,1991-01-03,00
+"Roby, Martha",1990-01-04,F,Republican,1234534570,rob@gfail.cof,01,0,Construction Worker,2000-01-04,02
+"Sewell, Terri A.",1990-01-05,F,Democratic,1234534571,sew@gfail.cof,01,0,Janitor,1990-01-05,07
+"Aderholt, Robert B.",1990-01-06,M,Republican,1234534572,ade@gail.co,01,1,,1990-01-06,04
+"Rogers, Mike D.",1990-01-07,M,Republican,1234534573,rog@gail.co,01,1,,1990-01-07,03
+"Brooks, Mo",1990-01-08,M,Republican,1234534574,bro@gail.co,01,1,,1990-01-08,05
+"Byrne, Bradley",1990-01-09,M,Republican,1234534575,byr@gail.co,01,1,,1990-01-09,01
+"Murkowski, Lisa",1950-02-05,F,Republican,1234534576,mur@gfail.cof,02,1,Driver,1950-02-05,00
+"Sullivan, Dan",1950-02-06,M,Republican,1234534577,sul@gmail.com,02,1,Cook,1950-02-06,00
+"Young, Don",1950-02-07,M,Republican,1234534578,you@gmail.com,02,1,Server,1950-02-07,00
+"Radewagen, Aumua Amata Coleman",1950-02-08,F,Republican,1234534579,rad@gail.co,60,1,,1950-02-08,00
+"Gallego, Ruben",1970-04-15,M,Democratic,1234534580,gal@gmail.com,04,1,Host,1980-04-15,07
+"Gosar, Paul A.",1970-04-16,M,Republican,1234534581,gos@gmail.com,04,1,Tailor,1970-04-16,04
+"Grijalva, Raul M.",1970-04-17,M,Democratic,1234534582,gri@gmail.com,04,1,Burger Flipper,1970-04-17,03
+"Franks, Trent",1970-04-18,M,Republican,1234534583,fra@gmail.com,04,1,Potato,1970-04-18,08
+"McCain, John",1970-04-19,M,Republican,1234534584,mcc@gail.co,04,1,,1970-04-19,00
+"McSally, Martha",1970-04-20,F,Republican,1234534585,mcs@gail.co,04,1,,1970-04-20,02
+"Sinema, Kyrsten",1970-04-21,F,Democratic,1234534586,sin@gail.co,04,1,,1970-04-21,09
+"O'Halleran, Tom",1970-04-22,M,Democratic,1234534587,o'h@gail.co,04,1,,1970-04-22,01
+"Schweikert, David",1970-04-23,M,Republican,1234534588,sch@gail.co,04,1,,1970-04-23,06
+"Flake, Jeff",1970-04-24,M,Republican,1234534589,fla@gail.co,04,1,,1970-04-24,00
+"Biggs, Andy",1970-04-25,M,Republican,1234534590,big@gail.co,04,1,,1970-04-25,05
+"Crawford, Eric A.",1970-04-26,,Republican,1234534591,cra@gail.co,05,1,,1970-04-26,01
+"Hill, J. French",1961-05-20,M,Republican,1234534592,hil@gmail.com,05,1,Programmer,1961-05-20,02
+"Boozman, John",1961-05-21,M,Republican,1234534593,boo@gmail.com,05,1,Plumber,1961-05-21,00
+"Cotton, Tom",1961-05-22,M,Republican,1234534594,cot@gmail.com,05,1,Vet,1961-05-22,00
+"Womack, Steve",1961-05-23,M,Republican,1234534595,wom@gmail.com,05,1,Lyft,1961-05-23,03
+"Westerman, Bruce",1961-05-24,,Republican,1234534596,wes@gail.co,05,1,,1961-05-24,04
+"Lowenthal, Alan S.",1961-05-25,,Democratic,1234534597,low@gail.co,06,1,,1961-05-25,47
+"Speier, Jackie",1961-05-26,,Democratic,1234534598,spe@gail.co,06,1,,1961-05-26,14
+"Hahn, Janice",1961-05-27,,Democratic,1234534599,hah@gail.co,06,1,,1961-05-27,44
+"Lieu, Ted",1961-05-28,,Democratic,1234534600,lie@gail.co,06,1,,1961-05-28,33
+"Lofgren, Zoe",1961-05-29,,Democratic,1234534601,lof@gail.co,06,1,,1961-05-29,19
+"Peters, Scott H.",1961-05-30,,Democratic,1234534602,pet@gail.co,06,1,,1961-05-30,52
+"Brownley, Julia",1961-05-31,F,Democratic,1234534603,bro@gail.co,06,1,Bartender,1961-05-31,26
+"Ruiz, Raul",1961-06-01,,Democratic,1234534604,rui@gail.co,06,1,,1961-06-01,36
+"Chu, Judy",1961-06-02,,Democratic,1234534605,chu@gail.co,06,1,,1961-06-02,27
+"Walters, Mimi",1961-06-03,,Republican,1234534606,wal@gail.co,06,1,,1961-06-03,45
+"Khanna, Ro",1961-06-04,,Democratic,1234534607,kha@gail.co,06,1,,1961-06-04,17
+"Lee, Barbara",1961-06-05,,Democratic,1234534608,lee@gail.co,06,1,,1961-06-05,13
+"Thompson, Mike",1961-06-06,,Democratic,1234534609,tho@gail.co,06,1,,1961-06-06,05
+"Becerra, Xavier",1961-06-07,,Democratic,1234534610,bec@gail.co,06,1,,1961-06-07,34
+"McCarthy, Kevin",1961-06-08,,Republican,1234534611,mcc@gail.co,06,1,,1961-06-08,23
+"McNerney, Jerry",1961-06-09,,Democratic,1234534612,mcn@gail.co,06,1,,1961-06-09,09
+"Hunter, Duncan D.",1961-06-10,,Republican,1234534613,hun@gail.co,06,1,,1961-06-10,50
+"Bass, Karen",1961-06-11,,Democratic,1234534614,bas@gail.co,06,1,,1961-06-11,37
+"Eshoo, Anna G.",1961-06-12,,Democratic,1234534615,esh@gail.co,06,1,,1961-06-12,18
+"Valadao, David G.",1961-06-13,,Republican,1234534616,val@gail.co,06,1,,1961-06-13,21
+"Aguilar, Pete",1961-06-14,,Democratic,1234534617,agu@gail.co,06,1,,1961-06-14,31
+"Calvert, Ken",1961-06-15,,Republican,1234534618,cal@gail.co,06,1,,1961-06-15,42
+"Sanchez, Linda T.",1961-06-16,,Democratic,1234534619,san@gail.co,06,1,,1961-06-16,38
+"Harris, Kamala",1961-06-17,,Democratic,1234534620,har@gail.co,06,1,,1961-06-17,00
+"Roybal-Allard, Lucille",1961-06-18,,Democratic,1234534621,roy@gail.co,06,1,,1961-06-18,40
+"McClintock, Tom",1961-06-19,,Republican,1234534622,mcc@gail.co,06,1,,1961-06-19,04
+"Davis, Susan A.",1961-06-20,,Democratic,1234534623,dav@gail.co,06,1,,1961-06-20,53
+"Rohrabacher, Dana",1961-06-21,,Republican,1234534624,roh@gail.co,06,1,,1961-06-21,48
+"Matsui, Doris O.",1961-06-22,,Democratic,1234534625,mat@gail.co,06,1,,1961-06-22,06
+"Garamendi, John",1961-06-23,,Democratic,1234534626,gar@gail.co,06,1,,1961-06-23,03
+"Cardenas, Tony",1961-06-24,,Democratic,1234534627,car@gail.co,06,1,,1961-06-24,29
+"Nunes, Devin",1961-06-25,,Republican,1234534628,nun@gail.co,06,1,,1961-06-25,22
+"LaMalfa, Doug",1961-06-26,,Republican,1234534629,lam@gail.co,06,1,,1961-06-26,01
+"Napolitano, Grace F.",1961-06-27,,Democratic,1234534630,nap@gail.co,06,1,,1961-06-27,32
+"Swalwell, Eric",1961-06-28,,Democratic,1234534631,swa@gail.co,06,1,,1961-06-28,15
+"Schiff, Adam B.",1961-06-29,,Democratic,1234534632,sch@gail.co,06,1,,1961-06-29,28
+"Waters, Maxine",1961-06-30,,Democratic,1234534633,wat@gail.co,06,1,,1961-06-30,43
+"Feinstein, Dianne",1961-07-01,,Democratic,1234534634,fei@gail.co,06,1,,1961-07-01,00
+"Knight, Stephen",1961-07-02,,Republican,1234534635,kni@gail.co,06,1,,1961-07-02,25
+"Cook, Paul",1961-07-03,,Republican,1234534636,coo@gail.co,06,1,,1961-07-03,08
+"Sherman, Brad",1961-07-04,,Democratic,1234534637,she@gail.co,06,1,,1961-07-04,30
+"Takano, Mark",1961-07-05,,Democratic,1234534638,tak@gail.co,06,1,,1961-07-05,41
+"Costa, Jim",1961-07-06,,Democratic,1234534639,cos@gail.co,06,1,,1961-07-06,16
+"Vargas, Juan",1961-07-07,,Democratic,1234534640,var@gail.co,06,1,,1961-07-07,51
+"Denham, Jeff",1961-07-08,,Republican,1234534641,den@gail.co,06,1,,1961-07-08,10
+"Royce, Edward R.",1961-07-09,,Republican,1234534642,roy@gail.co,06,1,,1961-07-09,39
+"Carbajal, Salud",1961-07-10,,Democratic,1234534643,car@gail.co,06,1,,1961-07-10,24
+"Pelosi, Nancy",1961-07-11,,Democratic,1234534644,pel@gail.co,06,1,,1961-07-11,12
+"Panetta, Jimmy",1961-07-12,,Democratic,1234534645,pan@gail.co,06,1,,1961-07-12,20
+"Correa, Lou",1961-07-13,,Democratic,1234534646,cor@gail.co,06,1,,1961-07-13,46
+"Torres, Norma J.",1961-07-14,,Democratic,1234534647,tor@gail.co,06,1,,1961-07-14,35
+"DeSaulnier, Mark",1961-07-15,,Democratic,1234534648,des@gail.co,06,1,,1961-07-15,11
+"Bera, Ami",1961-07-16,,Democratic,1234534649,ber@gail.co,06,1,,1961-07-16,07
+"Issa, Darrell E.",1961-07-17,,Republican,1234534650,iss@gail.co,06,1,,1961-07-17,49
+"Huffman, Jared",1961-07-18,,Democratic,1234534651,huf@gail.co,06,1,,1961-07-18,02
+"Perlmutter, Ed",1961-07-19,,Democratic,1234534652,per@gail.co,08,1,,1961-07-19,07
+"Gardner, Cory",1961-07-20,,Republican,1234534653,gar@gail.co,08,1,,1961-07-20,00
+"Polis, Jared",1961-07-21,,Democratic,1234534654,pol@gail.co,08,1,,1961-07-21,02
+"Coffman, Mike",1961-07-22,,Republican,1234534655,cof@gail.co,08,1,,1961-07-22,06
+"Buck, Ken",1961-07-23,,Republican,1234534656,buc@gail.co,08,1,,1961-07-23,04
+"DeGette, Diana",1961-07-24,,Democratic,1234534657,deg@gail.co,08,1,,1961-07-24,01
+"Lamborn, Doug",1961-07-25,,Republican,1234534658,lam@gail.co,08,1,,1961-07-25,05
+"Bennet, Michael F.",1961-07-26,,Democratic,1234534659,ben@gail.co,08,1,,1961-07-26,00
+"Tipton, Scott  R.",1961-07-27,,Republican,1234534660,tip@gail.co,08,1,,1961-07-27,03
+"Larson, John B.",1961-07-28,,Democratic,1234534661,lar@gail.co,09,1,,1961-07-28,01
+"Esty, Elizabeth H.",1961-07-29,,Democratic,1234534662,est@gail.co,09,1,,1961-07-29,05
+"Courtney, Joe",1961-07-30,,Democratic,1234534663,cou@gail.co,09,1,,1961-07-30,02
+"Himes, James A.",1961-07-31,,Democratic,1234534664,him@gail.co,09,1,,1961-07-31,04
+"Murphy, Christopher S.",1961-08-01,,Democratic,1234534665,mur@gail.co,09,1,,1961-08-01,00
+"DeLauro, Rosa L.",1961-08-02,,Democratic,1234534666,del@gail.co,09,1,,1961-08-02,03
+"Blumenthal, Richard",1961-08-03,,Democratic,1234534667,blu@gail.co,09,1,,1961-08-03,00
+"Carper, Thomas R.",1961-08-04,,Democratic,1234534668,car@gail.co,10,1,,1961-08-04,00
+"Coons, Christopher A.",1961-08-05,,Democratic,1234534669,coo@gail.co,10,1,,1961-08-05,00
+"Rochester, Lisa Blunt",1961-08-06,,Democratic,1234534670,roc@gail.co,10,1,,1961-08-06,00
+"Norton, Eleanor Holmes",1961-08-07,,Democratic,1234534671,nor@gail.co,11,1,,1961-08-07,00
+"Rooney, Thomas J.",1961-08-08,,Republican,1234534672,roo@gail.co,12,1,,1961-08-08,17
+"Rutherford, John",1961-08-09,,Republican,1234534673,rut@gail.co,12,1,,1961-08-09,04
+"Rubio, Marco",1961-08-10,,Republican,1234534674,rub@gail.co,12,1,,1961-08-10,00
+"Soto, Darren",1961-08-11,,Democratic,1234534675,sot@gail.co,12,1,,1961-08-11,09
+"Wasserman Schultz, Debbie",1961-08-12,,Democratic,1234534676,was@gail.co,12,1,,1961-08-12,23
+"Bilirakis, Gus M.",1961-08-13,,Republican,1234534677,bil@gail.co,12,1,,1961-08-13,12
+"Murphy, Stephanie",1961-08-14,,Democratic,1234534678,mur@gail.co,12,1,,1961-08-14,07
+"Dunn, Neal",1961-08-15,,Republican,1234534679,dun@gail.co,12,1,,1961-08-15,02
+"Ross, Dennis A.",1961-08-16,,Republican,1234534680,ros@gail.co,12,1,,1961-08-16,15
+"Gaetz, Matt",1961-08-17,,Republican,1234534681,gae@gail.co,12,1,,1961-08-17,01
+"Diaz-Balart, Mario",1961-08-18,,Republican,1234534682,dia@gail.co,12,1,,1961-08-18,25
+"Hastings, Alcee L.",1961-08-19,,Democratic,1234534683,has@gail.co,12,1,,1961-08-19,20
+"Wilson, Frederica S.",1961-08-20,,Democratic,1234534684,wil@gail.co,12,1,,1961-08-20,24
+"Crist, Charlie",1961-08-21,,Democratic,1234534685,cri@gail.co,12,1,,1961-08-21,13
+"Castor, Kathy",1961-08-22,,Democratic,1234534686,cas@gail.co,12,1,,1961-08-22,14
+"Mast, Brian",1961-08-23,,Republican,1234534687,mas@gail.co,12,1,,1961-08-23,18
+"Frankel, Lois",1961-08-24,,Democratic,1234534688,fra@gail.co,12,1,,1961-08-24,22
+"Demings, Val",1961-08-25,,Democratic,1234534689,dem@gail.co,12,1,,1961-08-25,10
+"Buchanan, Vern",1961-08-26,,Republican,1234534690,buc@gail.co,12,1,,1961-08-26,16
+"DeSantis, Ron",1961-08-27,,Republican,1234534691,des@gail.co,12,1,,1961-08-27,06
+"Yoho, Ted S.",1961-08-28,,Republican,1234534692,yoh@gail.co,12,1,,1961-08-28,03
+"Webster, Daniel",1961-08-29,,Republican,1234534693,web@gail.co,12,1,,1961-08-29,11
+"Posey, Bill",1961-08-30,,Republican,1234534694,pos@gail.co,12,1,,1961-08-30,08
+"Ros-Lehtinen, Ileana",1961-08-31,,Republican,1234534695,ros@gail.co,12,1,,1961-08-31,27
+"Nelson, Bill",1961-09-01,,Democratic,1234534696,nel@gail.co,12,1,,1961-09-01,00
+"Frankel, Lois",1961-09-02,,Democratic,1234534697,fra@gail.co,12,1,,1961-09-02,21
+"Rooney, Francis",1961-09-03,,Republican,1234534698,roo@gail.co,12,1,,1961-09-03,19
+"Lawson, Al",1961-09-04,,Democratic,1234534699,law@gail.co,12,1,,1961-09-04,05
+"Curbelo, Carlos",1961-09-05,,Republican,1234534700,cur@gail.co,12,1,,1961-09-05,26
+"Collins, Doug",1961-09-06,,Republican,1234534701,col@gail.co,13,1,,1961-09-06,09
+"Scott, Austin",1961-09-07,,Republican,1234534702,sco@gail.co,13,1,,1961-09-07,08
+"Scott, David",1961-09-08,,Democratic,1234534703,sco@gail.co,13,1,,1961-09-08,13
+"Graves, Tom",1961-09-09,,Republican,1234534704,gra@gail.co,13,1,,1961-09-09,14
+"Isakson, Johnny",1961-09-10,,Republican,1234534705,isa@gail.co,13,1,,1961-09-10,00
+"Perdue, David",1961-09-11,,Republican,1234534706,per@gail.co,13,1,,1961-09-11,00
+"Allen, Rick W.",1961-09-12,,Republican,1234534707,all@gail.co,13,1,,1961-09-12,12
+"Ferguson, Drew",1961-09-13,,Republican,1234534708,fer@gail.co,13,1,,1961-09-13,03
+"Price, Tom",1961-09-14,,Republican,1234534709,pri@gail.co,13,1,,1961-09-14,06
+"Hice, Jody B.",1961-09-15,,Republican,1234534710,hic@gail.co,13,1,,1961-09-15,10
+"Woodall, Rob",1961-09-16,,Republican,1234534711,woo@gail.co,13,1,,1961-09-16,07
+"Loudermilk, Barry",1961-09-17,,Republican,1234534712,lou@gail.co,13,1,,1961-09-17,11
+"Carter, Earl L.",1961-09-18,,Republican,1234534713,car@gail.co,13,1,,1961-09-18,01
+"Johnson, Henry C. ",1961-09-19,,Democratic,1234534714,joh@gail.co,13,1,,1961-09-19,04
+"Bishop, Sanford D.",1961-09-20,,Democratic,1234534715,bis@gail.co,13,1,,1961-09-20,02
+"Lewis, John",1961-09-21,,Democratic,1234534716,lew@gail.co,13,1,,1961-09-21,05
+"Bordallo, Madeleine Z.",1961-09-22,,Democratic,1234534717,bor@gail.co,66,1,,1961-09-22,00
+"Hirono, Mazie K.",1961-09-23,,Democratic,1234534718,hir@gail.co,15,1,,1961-09-23,00
+"Gabbard, Tulsi",1961-09-24,,Democratic,1234534719,gab@gail.co,15,1,,1961-09-24,02
+"Schatz, Brian",1961-09-25,,Democratic,1234534720,sch@gail.co,15,1,,1961-09-25,00
+"Hanabusa, Colleen",1961-09-26,,Democratic,1234534721,han@gail.co,15,1,,1961-09-26,01
+"Risch, James E.",1961-09-27,,Republican,1234534722,ris@gail.co,16,1,,1961-09-27,00
+"Simpson, Michael K.",1961-09-28,,Republican,1234534723,sim@gail.co,16,1,,1961-09-28,02
+"Labrador, Raul R.",1961-09-29,,Republican,1234534724,lab@gail.co,16,1,,1961-09-29,01
+"Crapo, Mike",1961-09-30,,Republican,1234534725,cra@gail.co,16,1,,1961-09-30,00
+"Quigley, Mike",1961-10-01,,Democratic,1234534726,qui@gail.co,17,1,,1961-10-01,05
+"Krishnamoorthi, Raja",1961-10-02,,Democratic,1234534727,kri@gail.co,17,1,,1961-10-02,08
+"Davis, Danny K.",1961-10-03,,Democratic,1234534728,dav@gail.co,17,1,,1961-10-03,07
+"Gutierrez, Luis V.",1961-10-04,,Democratic,1234534729,gut@gail.co,17,1,,1961-10-04,04
+"Foster, Bill",1961-10-05,,Democratic,1234534730,fos@gail.co,17,1,,1961-10-05,11
+"Lipinski, Daniel",1961-10-06,,Democratic,1234534731,lip@gail.co,17,1,,1961-10-06,03
+"Schakowsky, Janice D.",1961-10-07,,Democratic,1234534732,sch@gail.co,17,1,,1961-10-07,09
+"Davis, Rodney",1961-10-08,,Republican,1234534733,dav@gail.co,17,1,,1961-10-08,13
+"Rush, Bobby L.",1961-10-09,,Democratic,1234534734,rus@gail.co,17,1,,1961-10-09,01
+"Roskam, Peter J.",1961-10-10,,Republican,1234534735,ros@gail.co,17,1,,1961-10-10,06
+"Duckworth, Tammy",1961-10-11,,Democratic,1234534736,duc@gail.co,17,1,,1961-10-11,00
+"Kelly, Robin L.",1961-10-12,,Democratic,1234534737,kel@gail.co,17,1,,1961-10-12,02
+"Bustos, Cheri",1961-10-13,,Democratic,1234534738,bus@gail.co,17,1,,1961-10-13,17
+"Kinzinger, Adam",1961-10-14,,Republican,1234534739,kin@gail.co,17,1,,1961-10-14,16
+"LaHood, Darin",1961-10-15,,Republican,1234534740,lah@gail.co,17,1,,1961-10-15,18
+"Schneider, Brad",1961-10-16,,Democratic,1234534741,sch@gail.co,17,1,,1961-10-16,10
+"Hultgren, Randy",1961-10-17,,Republican,1234534742,hul@gail.co,17,1,,1961-10-17,14
+"Durbin, Richard",1961-10-18,,Democratic,1234534743,dur@gail.co,17,1,,1961-10-18,00
+"Bost, Mike",1961-10-19,,Republican,1234534744,bos@gail.co,17,1,,1961-10-19,12
+"Shimkus, John",1961-10-20,,Republican,1234534745,shi@gail.co,17,1,,1961-10-20,15
+"Carson, Andre",1961-10-21,,Democratic,1234534746,car@gail.co,18,1,,1961-10-21,07
+"Hollingsworth, Trey",1961-10-22,,Republican,1234534747,hol@gail.co,18,1,,1961-10-22,09
+"Donnelly, Joe",1961-10-23,,Democratic,1234534748,don@gail.co,18,1,,1961-10-23,00
+"Rokita, Todd",1961-10-24,,Republican,1234534749,rok@gail.co,18,1,,1961-10-24,04
+"Visclosky, Peter J.",1961-10-25,,Democratic,1234534750,vis@gail.co,18,1,,1961-10-25,01
+"Young, Todd",1961-10-26,,Republican,1234534751,you@gail.co,18,1,,1961-10-26,00
+"Brooks, Susan W.",1961-10-27,,Republican,1234534752,bro@gail.co,18,1,,1961-10-27,05
+"Messer, Luke",1961-10-28,,Republican,1234534753,mes@gail.co,18,1,,1961-10-28,06
+"Stutzman, Marlin A.",1961-10-29,,Republican,1234534754,stu@gail.co,18,1,,1961-10-29,03
+"Bucshon, Larry",1961-10-30,,Republican,1234534755,buc@gail.co,18,1,,1961-10-30,08
+"Walorski, Jackie",1961-10-31,,Republican,1234534756,wal@gail.co,18,1,,1961-10-31,02
+"King, Steve",1961-11-01,,Republican,1234534757,kin@gail.co,19,1,,1961-11-01,04
+"Young, David",1961-11-02,,Republican,1234534758,you@gail.co,19,1,,1961-11-02,03
+"Ernst, Joni",1961-11-03,,Republican,1234534759,ern@gail.co,19,1,,1961-11-03,00
+"Blum, Rod",1961-11-04,,Republican,1234534760,blu@gail.co,19,1,,1961-11-04,01
+"Grassley, Chuck",1961-11-05,,Republican,1234534761,gra@gail.co,19,1,,1961-11-05,00
+"Loebsack, David",1961-11-06,,Democratic,1234534762,loe@gail.co,19,1,,1961-11-06,02
+"Yoder, Kevin",1961-11-07,,Republican,1234534763,yod@gail.co,20,1,,1961-11-07,03
+"Jenkins, Lynn",1961-11-08,,Republican,1234534764,jen@gail.co,20,1,,1961-11-08,02
+"Marshall, Roger",1961-11-09,,Republican,1234534765,mar@gail.co,20,1,,1961-11-09,01
+"Roberts, Pat",1961-11-10,,Republican,1234534766,rob@gail.co,20,1,,1961-11-10,00
+"Moran, Jerry",1961-11-11,,Republican,1234534767,mor@gail.co,20,1,,1961-11-11,00
+"Pompeo, Mike",1961-11-12,,Republican,1234534768,pom@gail.co,20,1,,1961-11-12,04
+"Paul, Rand",1961-11-13,,Republican,1234534769,pau@gail.co,21,1,,1961-11-13,00
+"Barr, Andy",1961-11-14,,Republican,1234534770,bar@gail.co,21,1,,1961-11-14,06
+"McConnell, Mitch",1961-11-15,,Republican,1234534771,mcc@gail.co,21,1,,1961-11-15,00
+"Guthrie, Brett",1961-11-16,,Republican,1234534772,gut@gail.co,21,1,,1961-11-16,02
+"Massie, Thomas",1961-11-17,,Republican,1234534773,mas@gail.co,21,1,,1961-11-17,04
+"Rogers, Harold",1961-11-18,,Republican,1234534774,rog@gail.co,21,1,,1961-11-18,05
+"Yarmuth, John A.",1961-11-19,,Democratic,1234534775,yar@gail.co,21,1,,1961-11-19,03
+"Comer, James",1961-11-20,,Republican,1234534776,com@gail.co,21,1,,1961-11-20,01
+"Fleming, John",1961-11-21,,Republican,1234534777,fle@gail.co,22,1,,1961-11-21,04
+"Boustany, Charles W.",1961-11-22,,Republican,1234534778,bou@gail.co,22,1,,1961-11-22,03
+"Richmond, Cedric L.",1961-11-23,,Democratic,1234534779,ric@gail.co,22,1,,1961-11-23,02
+"Graves, Garret",1961-11-24,,Republican,1234534780,gra@gail.co,22,1,,1961-11-24,06
+"Scalise, Steve",1961-11-25,,Republican,1234534781,sca@gail.co,22,1,,1961-11-25,01
+"Abraham, Ralph Lee",1961-11-26,,Republican,1234534782,abr@gail.co,22,1,,1961-11-26,05
+"Cassidy, Bill",1961-11-27,,Republican,1234534783,cas@gail.co,22,1,,1961-11-27,00
+"Vitter, David",1961-11-28,,Republican,1234534784,vit@gail.co,22,1,,1961-11-28,00
+"King, Angus S.",1961-11-29,,Independent,1234534785,kin@gail.co,23,1,,1961-11-29,00
+"Pingree, Chellie",1961-11-30,,Democratic,1234534786,pin@gail.co,23,1,,1961-11-30,01
+"Collins, Susan M.",1961-12-01,,Republican,1234534787,col@gail.co,23,1,,1961-12-01,00
+"Poliquin, Bruce",1961-12-02,,Republican,1234534788,pol@gail.co,23,1,,1961-12-02,02
+"Brown, Anthony",1961-12-03,,Democratic,1234534789,bro@gail.co,24,1,,1961-12-03,04
+"Ruppersberger, C. A. Dutch",1961-12-04,,Democratic,1234534790,rup@gail.co,24,1,,1961-12-04,02
+"Cummings, Elijah E.",1961-12-05,,Democratic,1234534791,cum@gail.co,24,1,,1961-12-05,07
+"Cardin, Benjamin L.",1961-12-06,,Democratic,1234534792,car@gail.co,24,1,,1961-12-06,00
+"Delaney, John K.",1961-12-07,,Democratic,1234534793,del@gail.co,24,1,,1961-12-07,06
+"Sarbanes, John P.",1961-12-08,,Democratic,1234534794,sar@gail.co,24,1,,1961-12-08,03
+"Harris, Andy",1961-12-09,,Republican,1234534795,har@gail.co,24,1,,1961-12-09,01
+"Van Hollen, Chris",1961-12-10,,Democratic,1234534796,van@gail.co,24,1,,1961-12-10,08
+"Van Hollen, Chris",1961-12-11,,Democratic,1234534797,van@gail.co,24,1,,1961-12-11,00
+"Hoyer, Steny H.",1961-12-12,,Democratic,1234534798,hoy@gail.co,24,1,,1961-12-12,05
+"Capuano, Michael E.",1961-12-13,,Democratic,1234534799,cap@gail.co,25,1,,1961-12-13,07
+"Clark, Katherine M.",1961-12-14,,Democratic,1234534800,cla@gail.co,25,1,,1961-12-14,05
+"Neal, Richard E.",1961-12-15,,Democratic,1234534801,nea@gail.co,25,1,,1961-12-15,01
+"Lynch, Stephen F.",1961-12-16,,Democratic,1234534802,lyn@gail.co,25,1,,1961-12-16,08
+"Kennedy, Joseph P.",1961-12-17,,Democratic,1234534803,ken@gail.co,25,1,,1961-12-17,04
+"McGovern, James P.",1961-12-18,,Democratic,1234534804,mcg@gail.co,25,1,,1961-12-18,02
+"Keating, William R.",1961-12-19,,Democratic,1234534805,kea@gail.co,25,1,,1961-12-19,09
+"Warren, Elizabeth",1961-12-20,,Democratic,1234534806,war@gail.co,25,1,,1961-12-20,00
+"Moulton, Seth",1961-12-21,,Democratic,1234534807,mou@gail.co,25,1,,1961-12-21,06
+"Tsongas, Niki",1961-12-22,,Democratic,1234534808,tso@gail.co,25,1,,1961-12-22,03
+"Markey, Edward J.",1961-12-23,,Democratic,1234534809,mar@gail.co,25,1,,1961-12-23,00
+"Moolenaar, John R.",1961-12-24,,Republican,1234534810,moo@gail.co,26,1,,1961-12-24,04
+"Amash, Justin",1961-12-25,,Republican,1234534811,ama@gail.co,26,1,,1961-12-25,03
+"Dingell, Debbie",1961-12-26,,Democratic,1234534812,din@gail.co,26,1,,1961-12-26,12
+"Walberg, Tim",1961-12-27,,Republican,1234534813,wal@gail.co,26,1,,1961-12-27,07
+"Lawrence, Brenda L.",1961-12-28,,Democratic,1234534814,law@gail.co,26,1,,1961-12-28,14
+"Upton, Fred",1961-12-29,,Republican,1234534815,upt@gail.co,26,1,,1961-12-29,06
+"Bishop, Mike",1961-12-30,,Republican,1234534816,bis@gail.co,26,1,,1961-12-30,08
+"Bergman, Jack",1961-12-31,,Republican,1234534817,ber@gail.co,26,1,,1961-12-31,01
+"Peters, Gary C.",1962-01-01,,Democratic,1234534818,pet@gail.co,26,1,,1962-01-01,00
+"Trott, David A.",1962-01-02,,Republican,1234534819,tro@gail.co,26,1,,1962-01-02,11
+"Levin, Sander M.",1962-01-03,,Democratic,1234534820,lev@gail.co,26,1,,1962-01-03,09
+"Lewis, Jason",1962-01-04,,Republican,1234534821,lew@gail.co,26,1,,1962-01-04,02
+"Conyers, John",1962-01-05,,Democratic,1234534822,con@gail.co,26,1,,1962-01-05,13
+"Mitchell, Paul",1962-01-06,,Republican,1234534823,mit@gail.co,26,1,,1962-01-06,10
+"Kildee, Daniel T.",1962-01-07,,Democratic,1234534824,kil@gail.co,26,1,,1962-01-07,05
+"Stabenow, Debbie",1962-01-08,,Democratic,1234534825,sta@gail.co,26,1,,1962-01-08,00
+"Paulsen, Erik",1962-01-09,,Republican,1234534826,pau@gail.co,27,1,,1962-01-09,03
+"Walz, Timothy J.",1962-01-10,,Democratic,1234534827,wal@gail.co,27,1,,1962-01-10,01
+"Kline, John",1962-01-11,,Republican,1234534828,kli@gail.co,27,1,,1962-01-11,02
+"Nolan, Richard M.",1962-01-12,,Democratic,1234534829,nol@gail.co,27,1,,1962-01-12,08
+"Klobuchar, Amy",1962-01-13,,Democratic,1234534830,klo@gail.co,27,1,,1962-01-13,00
+"Emmer, Tom",1962-01-14,,Republican,1234534831,emm@gail.co,27,1,,1962-01-14,06
+"Ellison, Keith",1962-01-15,,Democratic,1234534832,ell@gail.co,27,1,,1962-01-15,05
+"Peterson, Collin C.",1962-01-16,,Democratic,1234534833,pet@gail.co,27,1,,1962-01-16,07
+"Franken, Al",1962-01-17,,Democratic,1234534834,fra@gail.co,27,1,,1962-01-17,00
+"McCollum, Betty",1962-01-18,,Democratic,1234534835,mcc@gail.co,27,1,,1962-01-18,04
+"Harper, Gregg",1962-01-19,,Republican,1234534836,har@gail.co,28,1,,1962-01-19,03
+"Kelly, Trent",1962-01-20,,Republican,1234534837,kel@gail.co,28,1,,1962-01-20,01
+"Palazzo, Steven M.",1962-01-21,,Republican,1234534838,pal@gail.co,28,1,,1962-01-21,04
+"Thompson, Bennie G.",1962-01-22,,Democratic,1234534839,tho@gail.co,28,1,,1962-01-22,02
+"Nunnelee, Alan",1962-01-23,,Republican,1234534840,nun@gail.co,28,1,,1962-01-23,01
+"Cochran, Thad",1962-01-24,,Republican,1234534841,coc@gail.co,28,1,,1962-01-24,00
+"Wicker, Roger F.",1962-01-25,,Republican,1234534842,wic@gail.co,28,1,,1962-01-25,00
+"Luetkemeyer, Blaine",1962-01-26,,Republican,1234534843,lue@gail.co,29,1,,1962-01-26,03
+"Graves, Sam",1962-01-27,,Republican,1234534844,gra@gail.co,29,1,,1962-01-27,06
+"Wagner, Ann",1962-01-28,,Republican,1234534845,wag@gail.co,29,1,,1962-01-28,02
+"McCaskill, Claire",1962-01-29,,Democratic,1234534846,mcc@gail.co,29,1,,1962-01-29,00
+"Hartzler, Vicky",1962-01-30,,Republican,1234534847,har@gail.co,29,1,,1962-01-30,04
+"Clay, Wm. Lacy",1962-01-31,,Democratic,1234534848,cla@gail.co,29,1,,1962-01-31,01
+"Long, Billy",1962-02-01,,Republican,1234534849,lon@gail.co,29,1,,1962-02-01,07
+"Blunt, Roy",1962-02-02,,Republican,1234534850,blu@gail.co,29,1,,1962-02-02,00
+"Smith, Jason",1962-02-03,,Republican,1234534851,smi@gail.co,29,1,,1962-02-03,08
+"Cleaver, Emanuel",1962-02-04,,Democratic,1234534852,cle@gail.co,29,1,,1962-02-04,05
+"Zinke, Ryan K.",1962-02-05,,Republican,1234534853,zin@gail.co,30,1,,1962-02-05,00
+"Tester, Jon",1962-02-06,,Democratic,1234534854,tes@gail.co,30,1,,1962-02-06,00
+"Daines, Steve",1962-02-07,,Republican,1234534855,dai@gail.co,30,1,,1962-02-07,00
+"Fischer, Deb",1962-02-08,,Republican,1234534856,fis@gail.co,31,1,,1962-02-08,00
+"Fortenberry, Jeff",1962-02-09,,Republican,1234534857,for@gail.co,31,1,,1962-02-09,01
+"Sasse, Ben",1962-02-10,,Republican,1234534858,sas@gail.co,31,1,,1962-02-10,00
+"Bacon, Don",1962-02-11,,Republican,1234534859,bac@gail.co,31,1,,1962-02-11,02
+"Smith, Adrian",1962-02-12,,Republican,1234534860,smi@gail.co,31,1,,1962-02-12,03
+"Heller, Dean",1962-02-13,,Republican,1234534861,hel@gail.co,32,1,,1962-02-13,00
+"Masto, Catherine Cortez",1962-02-14,,Democratic,1234534862,mas@gail.co,32,1,,1962-02-14,00
+"Rosen, Jacky",1962-02-15,,Democratic,1234534863,ros@gail.co,32,1,,1962-02-15,03
+"Amodei, Mark E.",1962-02-16,,Republican,1234534864,amo@gail.co,32,1,,1962-02-16,02
+"Titus, Dina",1962-02-17,,Democratic,1234534865,tit@gail.co,32,1,,1962-02-17,01
+"Kihuen, Ruben",1962-02-18,,Democratic,1234534866,kih@gail.co,32,1,,1962-02-18,04
+"Shea-Porter, Carol",1962-02-19,,Democratic,1234534867,she@gail.co,33,1,,1962-02-19,01
+"Kuster, Ann M.",1962-02-20,,Democratic,1234534868,kus@gail.co,33,1,,1962-02-20,02
+"Shaheen, Jeanne",1962-02-21,,Democratic,1234534869,sha@gail.co,33,1,,1962-02-21,00
+"Hassan, Maggie",1962-02-22,,Democratic,1234534870,has@gail.co,33,1,,1962-02-22,00
+"Norcross, Donald",1962-02-23,,Democratic,1234534871,nor@gail.co,34,1,,1962-02-23,01
+"Sires, Albio",1962-02-24,,Democratic,1234534872,sir@gail.co,34,1,,1962-02-24,08
+"Gottheimer, Josh",1962-02-25,,Democratic,1234534873,got@gail.co,34,1,,1962-02-25,05
+"Menendez, Robert",1962-02-26,,Democratic,1234534874,men@gail.co,34,1,,1962-02-26,00
+"Watson Coleman, Bonnie",1962-02-27,,Democratic,1234534875,wat@gail.co,34,1,,1962-02-27,12
+"MacArthur, Thomas",1962-02-28,,Republican,1234534876,mac@gail.co,34,1,,1962-02-28,03
+"Frelinghuysen, Rodney P.",1962-03-01,,Republican,1234534877,fre@gail.co,34,1,,1962-03-01,11
+"Smith, Christopher H.",1962-03-02,,Republican,1234534878,smi@gail.co,34,1,,1962-03-02,04
+"LoBiondo, Frank A.",1962-03-03,,Republican,1234534879,lob@gail.co,34,1,,1962-03-03,02
+"Payne, Donald M.",1962-03-04,,Democratic,1234534880,pay@gail.co,34,1,,1962-03-04,10
+"Booker, Cory A.",1962-03-05,,Democratic,1234534881,boo@gail.co,34,1,,1962-03-05,00
+"Pallone, Frank",1962-03-06,,Democratic,1234534882,pal@gail.co,34,1,,1962-03-06,06
+"Pascrell, Bill",1962-03-07,,Democratic,1234534883,pas@gail.co,34,1,,1962-03-07,09
+"Lance, Leonard",1962-03-08,,Republican,1234534884,lan@gail.co,34,1,,1962-03-08,07
+"Pearce, Stevan",1962-03-09,,Republican,1234534885,pea@gail.co,35,1,,1962-03-09,02
+"Lujan Grisham, Michelle",1962-03-10,,Democratic,1234534886,luj@gail.co,35,1,,1962-03-10,01
+"Udall, Tom",1962-03-11,,Democratic,1234534887,uda@gail.co,35,1,,1962-03-11,00
+"Heinrich, Martin",1962-03-12,,Democratic,1234534888,hei@gail.co,35,1,,1962-03-12,00
+"Lujan, Ben Ray",1962-03-13,,Democratic,1234534889,luj@gail.co,35,1,,1962-03-13,03
+"Lowey, Nita M.",1962-03-14,,Democratic,1234534890,low@gail.co,36,1,,1962-03-14,17
+"Rice, Kathleen M.",1962-03-15,,Democratic,1234534891,ric@gail.co,36,1,,1962-03-15,04
+"Katko, John",1962-03-16,,Republican,1234534892,kat@gail.co,36,1,,1962-03-16,24
+"King, Peter T.",1962-03-17,,Republican,1234534893,kin@gail.co,36,1,,1962-03-17,02
+"Zeldin, Lee M.",1962-03-18,,Republican,1234534894,zel@gail.co,36,1,,1962-03-18,01
+"Tonko, Paul",1962-03-19,,Democratic,1234534895,ton@gail.co,36,1,,1962-03-19,20
+"Espaillat, Adriano",1962-03-20,,Democratic,1234534896,esp@gail.co,36,1,,1962-03-20,13
+"Stefanik, Elise M.",1962-03-21,,Republican,1234534897,ste@gail.co,36,1,,1962-03-21,21
+"Serrano, Jose E.",1962-03-22,,Democratic,1234534898,ser@gail.co,36,1,,1962-03-22,15
+"Collins, Chris",1962-03-23,,Republican,1234534899,col@gail.co,36,1,,1962-03-23,27
+"Meeks, Gregory W.",1962-03-24,,Democratic,1234534900,mee@gail.co,36,1,,1962-03-24,05
+"Nadler, Jerrold",1962-03-25,,Democratic,1234534901,nad@gail.co,36,1,,1962-03-25,10
+"Velazquez, Nydia M.",1962-03-26,,Democratic,1234534902,vel@gail.co,36,1,,1962-03-26,07
+"Clarke, Yvette D.",1962-03-27,,Democratic,1234534903,cla@gail.co,36,1,,1962-03-27,09
+"Meng, Grace",1962-03-28,,Democratic,1234534904,men@gail.co,36,1,,1962-03-28,06
+"Jeffries, Hakeem S.",1962-03-29,,Democratic,1234534905,jef@gail.co,36,1,,1962-03-29,08
+"Reed, Tom",1962-03-30,,Republican,1234534906,ree@gail.co,36,1,,1962-03-30,23
+"Schumer, Charles E.",1962-03-31,,Democratic,1234534907,sch@gail.co,36,1,,1962-03-31,00
+"Higgins, Brian",1962-04-01,,Democratic,1234534908,hig@gail.co,36,1,,1962-04-01,26
+"Crowley, Joseph",1962-04-02,,Democratic,1234534909,cro@gail.co,36,1,,1962-04-02,14
+"Tenney, Claudia",1962-04-03,,Republican,1234534910,ten@gail.co,36,1,,1962-04-03,22
+"Donovan, Daniel M.",1962-04-04,,Republican,1234534911,don@gail.co,36,1,,1962-04-04,11
+"Gillibrand, Kirsten E.",1962-04-05,,Democratic,1234534912,gil@gail.co,36,1,,1962-04-05,00
+"Engel, Eliot L.",1962-04-06,,Democratic,1234534913,eng@gail.co,36,1,,1962-04-06,16
+"Maloney, Sean Patrick",1962-04-07,,Democratic,1234534914,mal@gail.co,36,1,,1962-04-07,18
+"Maloney, Carolyn B.",1962-04-08,,Democratic,1234534915,mal@gail.co,36,1,,1962-04-08,12
+"Slaughter, Louise McIntosh",1962-04-09,,Democratic,1234534916,sla@gail.co,36,1,,1962-04-09,25
+"Faso, John",1962-04-10,,Republican,1234534917,fas@gail.co,36,1,,1962-04-10,19
+"Suozzi, Tom",1962-04-11,,Democratic,1234534918,suo@gail.co,36,1,,1962-04-11,03
+"Foxx, Virginia",1962-04-12,,Republican,1234534919,fox@gail.co,37,1,,1962-04-12,05
+"Holding, George",1962-04-13,,Republican,1234534920,hol@gail.co,37,1,,1962-04-13,02
+"Jones, Walter B.",1962-04-14,,Republican,1234534921,jon@gail.co,37,1,,1962-04-14,03
+"Rouzer, David",1962-04-15,,Republican,1234534922,rou@gail.co,37,1,,1962-04-15,07
+"Price, David E.",1962-04-16,,Democratic,1234534923,pri@gail.co,37,1,,1962-04-16,04
+"Meadows, Mark",1962-04-17,,Republican,1234534924,mea@gail.co,37,1,,1962-04-17,11
+"Pittenger, Robert",1962-04-18,,Republican,1234534925,pit@gail.co,37,1,,1962-04-18,09
+"Tillis, Thom",1962-04-19,,Republican,1234534926,til@gail.co,37,1,,1962-04-19,00
+"Hudson, Richard",1962-04-20,,Republican,1234534927,hud@gail.co,37,1,,1962-04-20,08
+"Butterfield, G. K.",1962-04-21,,Democratic,1234534928,but@gail.co,37,1,,1962-04-21,01
+"Burr, Richard",1962-04-22,,Republican,1234534929,bur@gail.co,37,1,,1962-04-22,00
+"Walker, Mark",1962-04-23,,Republican,1234534930,wal@gail.co,37,1,,1962-04-23,06
+"Adams, Alma S.",1962-04-24,,Democratic,1234534931,ada@gail.co,37,1,,1962-04-24,12
+"McHenry, Patrick T.",1962-04-25,,Republican,1234534932,mch@gail.co,37,1,,1962-04-25,10
+"Budd, Ted",1962-04-26,,Republican,1234534933,bud@gail.co,37,1,,1962-04-26,13
+"Heitkamp, Heidi",1962-04-27,,Democratic,1234534934,hei@gail.co,38,1,,1962-04-27,00
+"Hoeven, John",1962-04-28,,Republican,1234534935,hoe@gail.co,38,1,,1962-04-28,00
+"Cramer, Kevin",1962-04-29,,Republican,1234534936,cra@gail.co,38,1,,1962-04-29,00
+"Sablan, Gregorio Kilili Camacho",1962-04-30,,Democratic,1234534937,sab@gail.co,69,1,,1962-04-30,00
+"Joyce, David P.",1962-05-01,,Republican,1234534938,joy@gail.co,39,1,,1962-05-01,14
+"Kaptur, Marcy",1962-05-02,,Democratic,1234534939,kap@gail.co,39,1,,1962-05-02,09
+"Jordan, Jim",1962-05-03,,Republican,1234534940,jor@gail.co,39,1,,1962-05-03,04
+"Portman, Rob",1962-05-04,,Republican,1234534941,por@gail.co,39,1,,1962-05-04,00
+"Gibbs, Bob",1962-05-05,,Republican,1234534942,gib@gail.co,39,1,,1962-05-05,07
+"Davidson, Warren",1962-05-06,,Republican,1234534943,dav@gail.co,39,1,,1962-05-06,08
+"Brown, Sherrod",1962-05-07,,Democratic,1234534944,bro@gail.co,39,1,,1962-05-07,00
+"Latta, Robert E.",1962-05-08,,Republican,1234534945,lat@gail.co,39,1,,1962-05-08,05
+"Johnson, Bill",1962-05-09,,Republican,1234534946,joh@gail.co,39,1,,1962-05-09,06
+"Renacci, James B.",1962-05-10,,Republican,1234534947,ren@gail.co,39,1,,1962-05-10,16
+"Chabot, Steve",1962-05-11,,Republican,1234534948,cha@gail.co,39,1,,1962-05-11,01
+"Stivers, Steve",1962-05-12,,Republican,1234534949,sti@gail.co,39,1,,1962-05-12,15
+"Turner, Michael R.",1962-05-13,,Republican,1234534950,tur@gail.co,39,1,,1962-05-13,10
+"Tiberi, Patrick J.",1962-05-14,,Republican,1234534951,tib@gail.co,39,1,,1962-05-14,12
+"Wenstrup, Brad R.",1962-05-15,,Republican,1234534952,wen@gail.co,39,1,,1962-05-15,02
+"Ryan, Tim",1962-05-16,,Democratic,1234534953,rya@gail.co,39,1,,1962-05-16,13
+"Beatty, Joyce",1962-05-17,,Democratic,1234534954,bea@gail.co,39,1,,1962-05-17,03
+"Fudge, Marcia L.",1962-05-18,,Democratic,1234534955,fud@gail.co,39,1,,1962-05-18,11
+"Mullin, Markwayne",1962-05-19,,Republican,1234534956,mul@gail.co,40,1,,1962-05-19,02
+"Cole, Tom",1962-05-20,,Republican,1234534957,col@gail.co,40,1,,1962-05-20,04
+"Lankford, James",1962-05-21,,Republican,1234534958,lan@gail.co,40,1,,1962-05-21,00
+"Lucas, Frank D.",1962-05-22,,Republican,1234534959,luc@gail.co,40,1,,1962-05-22,03
+"Bridenstine, Jim",1962-05-23,,Republican,1234534960,bri@gail.co,40,1,,1962-05-23,01
+"Inhofe, James M.",1962-05-24,,Republican,1234534961,inh@gail.co,40,1,,1962-05-24,00
+"Russell, Steve",1962-05-25,,Republican,1234534962,rus@gail.co,40,1,,1962-05-25,05
+"Schrader, Kurt",1962-05-26,,Democratic,1234534963,sch@gail.co,41,1,,1962-05-26,05
+"Merkley, Jeff",1962-05-27,,Democratic,1234534964,mer@gail.co,41,1,,1962-05-27,00
+"Bonamici, Suzanne",1962-05-28,,Democratic,1234534965,bon@gail.co,41,1,,1962-05-28,01
+"DeFazio, Peter A.",1962-05-29,,Democratic,1234534966,def@gail.co,41,1,,1962-05-29,04
+"Blumenauer, Earl",1962-05-30,,Democratic,1234534967,blu@gail.co,41,1,,1962-05-30,03
+"Wyden, Ron",1962-05-31,,Democratic,1234534968,wyd@gail.co,41,1,,1962-05-31,00
+"Walden, Greg",1962-06-01,,Republican,1234534969,wal@gail.co,41,1,,1962-06-01,02
+"Costello, Ryan A.",1962-06-02,,Republican,1234534970,cos@gail.co,42,1,,1962-06-02,06
+"Smucker, Lloyd",1962-06-03,,Republican,1234534971,smu@gail.co,42,1,,1962-06-03,16
+"Thompson, Glenn",1962-06-04,,Republican,1234534972,tho@gail.co,42,1,,1962-06-04,05
+"Casey, Robert P.",1962-06-05,,Democratic,1234534973,cas@gail.co,42,1,,1962-06-05,00
+"Brady, Robert A.",1962-06-06,,Democratic,1234534974,bra@gail.co,42,1,,1962-06-06,01
+"Barletta, Lou",1962-06-07,,Republican,1234534975,bar@gail.co,42,1,,1962-06-07,11
+"Dent, Charles W.",1962-06-08,,Republican,1234534976,den@gail.co,42,1,,1962-06-08,15
+"Doyle, Michael F.",1962-06-09,,Democratic,1234534977,doy@gail.co,42,1,,1962-06-09,14
+"Meehan, Patrick",1962-06-10,,Republican,1234534978,mee@gail.co,42,1,,1962-06-10,07
+"Marino, Tom",1962-06-11,,Republican,1234534979,mar@gail.co,42,1,,1962-06-11,10
+"Rothfus, Keith J.",1962-06-12,,Republican,1234534980,rot@gail.co,42,1,,1962-06-12,12
+"Cartwright, Matt",1962-06-13,,Democratic,1234534981,car@gail.co,42,1,,1962-06-13,17
+"Shuster, Bill",1962-06-14,,Republican,1234534982,shu@gail.co,42,1,,1962-06-14,09
+"Evans, Dwight",1962-06-15,,Democratic,1234534983,eva@gail.co,42,1,,1962-06-15,02
+"Murphy, Tim",1962-06-16,,Republican,1234534984,mur@gail.co,42,1,,1962-06-16,18
+"Kelly, Mike",1962-06-17,,Republican,1234534985,kel@gail.co,42,1,,1962-06-17,03
+"Boyle, Brendan F.",1962-06-18,,Democratic,1234534986,boy@gail.co,42,1,,1962-06-18,13
+"Fitzpatrick, Michael G.",1962-06-19,,Republican,1234534987,fit@gail.co,42,1,,1962-06-19,08
+"Toomey, Pat",1962-06-20,,Republican,1234534988,too@gail.co,42,1,,1962-06-20,00
+"Perry, Scott",1962-06-21,,Republican,1234534989,per@gail.co,42,1,,1962-06-21,04
+"Pierluisi, Pedro R.",1962-06-22,,Democratic,1234534990,pie@gail.co,72,1,,1962-06-22,00
+"Cicilline, David N.",1962-06-23,,Democratic,1234534991,cic@gail.co,44,1,,1962-06-23,01
+"Langevin, James R.",1962-06-24,,Democratic,1234534992,lan@gail.co,44,1,,1962-06-24,02
+"Whitehouse, Sheldon",1962-06-25,,Democratic,1234534993,whi@gail.co,44,1,,1962-06-25,00
+"Reed, Jack",1962-06-26,,Democratic,1234534994,ree@gail.co,44,1,,1962-06-26,00
+"Gowdy, Trey",1962-06-27,,Republican,1234534995,gow@gail.co,45,1,,1962-06-27,04
+"Graham, Lindsey",1962-06-28,,Republican,1234534996,gra@gail.co,45,1,,1962-06-28,00
+"Clyburn, James E.",1962-06-29,,Democratic,1234534997,cly@gail.co,45,1,,1962-06-29,06
+"Mulvaney, Mick",1962-06-30,,Republican,1234534998,mul@gail.co,45,1,,1962-06-30,05
+"Wilson, Joe",1962-07-01,,Republican,1234534999,wil@gail.co,45,1,,1962-07-01,02
+"Duncan, Jeff",1962-07-02,,Republican,1234535000,dun@gail.co,45,1,,1962-07-02,03
+"Sanford, Mark",1962-07-03,,Republican,1234535001,san@gail.co,45,1,,1962-07-03,01
+"Scott, Tim",1962-07-04,,Republican,1234535002,sco@gail.co,45,1,,1962-07-04,00
+"Rice, Tom",1962-07-05,,Republican,1234535003,ric@gail.co,45,1,,1962-07-05,07
+"Noem, Kristi L.",1962-07-06,,Republican,1234535004,noe@gail.co,46,1,,1962-07-06,00
+"Rounds, Mike",1962-07-07,,Republican,1234535005,rou@gail.co,46,1,,1962-07-07,00
+"Thune, John",1962-07-08,,Republican,1234535006,thu@gail.co,46,1,,1962-07-08,00
+"Duncan, John J.",1962-07-09,,Republican,1234535007,dun@gail.co,47,1,,1962-07-09,02
+"Kustoff, David",1962-07-10,,Republican,1234535008,kus@gail.co,47,1,,1962-07-10,08
+"Corker, Bob",1962-07-11,,Republican,1234535009,cor@gail.co,47,1,,1962-07-11,00
+"Cooper, Jim",1962-07-12,,Democratic,1234535010,coo@gail.co,47,1,,1962-07-12,05
+"Fleischmann, Charles J.",1962-07-13,,Republican,1234535011,fle@gail.co,47,1,,1962-07-13,03
+"Blackburn, Marsha",1962-07-14,,Republican,1234535012,bla@gail.co,47,1,,1962-07-14,07
+"Alexander, Lamar",1962-07-15,,Republican,1234535013,ale@gail.co,47,1,,1962-07-15,00
+"Roe, David P.",1962-07-16,,Republican,1234535014,roe@gail.co,47,1,,1962-07-16,01
+"Black, Diane",1962-07-17,,Republican,1234535015,bla@gail.co,47,1,,1962-07-17,06
+"DesJarlais, Scott",1962-07-18,,Republican,1234535016,des@gail.co,47,1,,1962-07-18,04
+"Cohen, Steve",1962-07-19,,Democratic,1234535017,coh@gail.co,47,1,,1962-07-19,09
+"Green, Gene",1962-07-20,,Democratic,1234535018,gre@gail.co,48,1,,1962-07-20,29
+"Conaway, K. Michael",1962-07-21,,Republican,1234535019,con@gail.co,48,1,,1962-07-21,11
+"Cruz, Ted",1962-07-22,,Republican,1234535020,cru@gail.co,48,1,,1962-07-22,00
+"Cuellar, Henry",1962-07-23,,Democratic,1234535021,cue@gail.co,48,1,,1962-07-23,28
+"Olson, Pete",1962-07-24,,Republican,1234535022,ols@gail.co,48,1,,1962-07-24,22
+"Veasey, Marc A.",1962-07-25,,Democratic,1234535023,vea@gail.co,48,1,,1962-07-25,33
+"Johnson, Eddie Bernice",1962-07-26,,Democratic,1234535024,joh@gail.co,48,1,,1962-07-26,30
+"Burgess, Michael C.",1962-07-27,,Republican,1234535025,bur@gail.co,48,1,,1962-07-27,26
+"Carter, John R.",1962-07-28,,Republican,1234535026,car@gail.co,48,1,,1962-07-28,31
+"Babin, Brian",1962-07-29,,Republican,1234535027,bab@gail.co,48,1,,1962-07-29,36
+"Gohmert, Louie",1962-07-30,,Republican,1234535028,goh@gail.co,48,1,,1962-07-30,01
+"Jackson Lee, Sheila",1962-07-31,,Democratic,1234535029,jac@gail.co,48,1,,1962-07-31,18
+"McCaul, Michael T.",1962-08-01,,Republican,1234535030,mcc@gail.co,48,1,,1962-08-01,10
+"Granger, Kay",1962-08-02,,Republican,1234535031,gra@gail.co,48,1,,1962-08-02,12
+"Thornberry, Mac",1962-08-03,,Republican,1234535032,tho@gail.co,48,1,,1962-08-03,13
+"Green, Al",1962-08-04,,Democratic,1234535033,gre@gail.co,48,1,,1962-08-04,09
+"Smith, Lamar",1962-08-05,,Republican,1234535034,smi@gail.co,48,1,,1962-08-05,21
+"O&#39;Rourke, Beto",1962-08-06,,Democratic,1234535035,o&#@gail.co,48,1,,1962-08-06,16
+"Brady, Kevin",1962-08-07,,Republican,1234535036,bra@gail.co,48,1,,1962-08-07,08
+"Johnson, Sam",1962-08-08,,Republican,1234535037,joh@gail.co,48,1,,1962-08-08,03
+"Barton, Joe",1962-08-09,,Republican,1234535038,bar@gail.co,48,1,,1962-08-09,06
+"Farenthold, Blake",1962-08-10,,Republican,1234535039,far@gail.co,48,1,,1962-08-10,27
+"Culberson, John Abney",1962-08-11,,Republican,1234535040,cul@gail.co,48,1,,1962-08-11,07
+"Doggett, Lloyd",1962-08-12,,Democratic,1234535041,dog@gail.co,48,1,,1962-08-12,35
+"Sessions, Pete",1962-08-13,,Republican,1234535042,ses@gail.co,48,1,,1962-08-13,32
+"Castro, Joaquin",1962-08-14,,Democratic,1234535043,cas@gail.co,48,1,,1962-08-14,20
+"Arrington, Jodey",1962-08-15,,Republican,1234535044,arr@gail.co,48,1,,1962-08-15,19
+"Williams, Roger",1962-08-16,,Republican,1234535045,wil@gail.co,48,1,,1962-08-16,25
+"Weber, Randy K.",1962-08-17,,Republican,1234535046,web@gail.co,48,1,,1962-08-17,14
+"Gonzalez, Vicente",1962-08-18,,Democratic,1234535047,gon@gail.co,48,1,,1962-08-18,15
+"Hensarling, Jeb",1962-08-19,,Republican,1234535048,hen@gail.co,48,1,,1962-08-19,05
+"Poe, Ted",1962-08-20,,Republican,1234535049,poe@gail.co,48,1,,1962-08-20,02
+"Cornyn, John",1962-08-21,,Republican,1234535050,cor@gail.co,48,1,,1962-08-21,00
+"Marchant, Kenny",1962-08-22,,Republican,1234535051,mar@gail.co,48,1,,1962-08-22,24
+"Vela, Filemon",1962-08-23,,Democratic,1234535052,vel@gail.co,48,1,,1962-08-23,34
+"Flores, Bill",1962-08-24,,Republican,1234535053,flo@gail.co,48,1,,1962-08-24,17
+"Hurd, Will",1962-08-25,,Republican,1234535054,hur@gail.co,48,1,,1962-08-25,23
+"Ratcliffe, John",1962-08-26,,Republican,1234535055,rat@gail.co,48,1,,1962-08-26,04
+"Bishop, Rob",1962-08-27,,Republican,1234535056,bis@gail.co,49,1,,1962-08-27,01
+"Lee, Mike",1962-08-28,,Republican,1234535057,lee@gail.co,49,1,,1962-08-28,00
+"Stewart, Chris",1962-08-29,,Republican,1234535058,ste@gail.co,49,1,,1962-08-29,02
+"Love, Mia B.",1962-08-30,,Republican,1234535059,lov@gail.co,49,1,,1962-08-30,04
+"Hatch, Orrin G.",1962-08-31,,Republican,1234535060,hat@gail.co,49,1,,1962-08-31,00
+"Chaffetz, Jason",1962-09-01,,Republican,1234535061,cha@gail.co,49,1,,1962-09-01,03
+"Leahy, Patrick J.",1962-09-02,,Democratic,1234535062,lea@gail.co,50,1,,1962-09-02,00
+"Sanders, Bernard",1962-09-03,,Independent,1234535063,san@gail.co,50,1,,1962-09-03,00
+"Welch, Peter",1962-09-04,,Democratic,1234535064,wel@gail.co,50,1,,1962-09-04,00
+"Plaskett, Stacey E.",1962-09-05,,Democratic,1234535065,pla@gail.co,,1,,1962-09-05,00
+"Garrett, Tom",1962-09-06,,Republican,1234535066,gar@gail.co,51,1,,1962-09-06,05
+"Taylor, Scott",1962-09-07,,Republican,1234535067,tay@gail.co,51,1,,1962-09-07,02
+"Kaine, Tim",1962-09-08,,Democratic,1234535068,kai@gail.co,51,1,,1962-09-08,00
+"McEachin, Donald",1962-09-09,,Democratic,1234535069,mce@gail.co,51,1,,1962-09-09,04
+"Beyer, Donald S.",1962-09-10,,Democratic,1234535070,bey@gail.co,51,1,,1962-09-10,08
+"Scott, Robert C.",1962-09-11,,Democratic,1234535071,sco@gail.co,51,1,,1962-09-11,03
+"Warner, Mark R.",1962-09-12,,Democratic,1234535072,war@gail.co,51,1,,1962-09-12,00
+"Griffith, H. Morgan",1962-09-13,,Republican,1234535073,gri@gail.co,51,1,,1962-09-13,09
+"Brat, Dave",1962-09-14,,Republican,1234535074,bra@gail.co,51,1,,1962-09-14,07
+"Connolly, Gerald E.",1962-09-15,,Democratic,1234535075,con@gail.co,51,1,,1962-09-15,11
+"Comstock, Barbara",1962-09-16,,Republican,1234535076,com@gail.co,51,1,,1962-09-16,10
+"Goodlatte, Bob",1962-09-17,,Republican,1234535077,goo@gail.co,51,1,,1962-09-17,06
+"Wittman, Robert J.",1962-09-18,,Republican,1234535078,wit@gail.co,51,1,,1962-09-18,01
+"Heck, Denny",1962-09-19,,Democratic,1234535079,hec@gail.co,53,1,,1962-09-19,10
+"Smith, Adam",1962-09-20,,Democratic,1234535080,smi@gail.co,53,1,,1962-09-20,09
+"McMorris Rodgers, Cathy",1962-09-21,,Republican,1234535081,mcm@gail.co,53,1,,1962-09-21,05
+"Larsen, Rick",1962-09-22,,Democratic,1234535082,lar@gail.co,53,1,,1962-09-22,02
+"Newhouse, Dan",1962-09-23,,Republican,1234535083,new@gail.co,53,1,,1962-09-23,04
+"DelBene, Suzan K.",1962-09-24,,Democratic,1234535084,del@gail.co,53,1,,1962-09-24,01
+"Herrera Beutler, Jaime",1962-09-25,,Republican,1234535085,her@gail.co,53,1,,1962-09-25,03
+"Jayapal, Pramila",1962-09-26,,Democratic,1234535086,jay@gail.co,53,1,,1962-09-26,07
+"Murray, Patty",1962-09-27,,Democratic,1234535087,mur@gail.co,53,1,,1962-09-27,00
+"Reichert, David G.",1962-09-28,,Republican,1234535088,rei@gail.co,53,1,,1962-09-28,08
+"Cantwell, Maria",1962-09-29,,Democratic,1234535089,can@gail.co,53,1,,1962-09-29,00
+"Kilmer, Derek",1962-09-30,,Democratic,1234535090,kil@gail.co,53,1,,1962-09-30,06
+"Capito, Shelley Moore",1962-10-01,,Republican,1234535091,cap@gail.co,54,1,,1962-10-01,00
+"McKinley, David B.",1962-10-02,,Republican,1234535092,mck@gail.co,54,1,,1962-10-02,01
+"Mooney, Alexander X.",1962-10-03,,Republican,1234535093,moo@gail.co,54,1,,1962-10-03,02
+"Manchin, Joe",1962-10-04,,Democratic,1234535094,man@gail.co,54,1,,1962-10-04,00
+"Jenkins, Evan H.",1962-10-05,,Republican,1234535095,jen@gail.co,54,1,,1962-10-05,03
+"Kind, Ron",1962-10-06,,Democratic,1234535096,kin@gail.co,55,1,,1962-10-06,03
+"Baldwin, Tammy",1962-10-07,,Democratic,1234535097,bal@gail.co,55,1,,1962-10-07,00
+"Pocan, Mark",1962-10-08,,Democratic,1234535098,poc@gail.co,55,1,,1962-10-08,02
+"Sensenbrenner, F. James",1962-10-09,,Republican,1234535099,sen@gail.co,55,1,,1962-10-09,05
+"Ryan, Paul",1962-10-10,,Republican,1234535100,rya@gail.co,55,1,,1962-10-10,01
+"Duffy, Sean P.",1962-10-11,,Republican,1234535101,duf@gail.co,55,1,,1962-10-11,07
+"Moore, Gwen",1962-10-12,,Democratic,1234535102,moo@gail.co,55,1,,1962-10-12,04
+"Grothman, Glenn",1962-10-13,,Republican,1234535103,gro@gail.co,55,1,,1962-10-13,06
+"Johnson, Ron",1962-10-14,,Republican,1234535104,joh@gail.co,55,1,,1962-10-14,00
+"Gallagher, Mike",1962-10-15,,Republican,1234535105,gal@gail.co,55,1,,1962-10-15,08
+"Enzi, Michael B.",1962-10-16,,Republican,1234535106,enz@gail.co,56,1,,1962-10-16,00
+"Cheney, Liz",1962-10-17,,Republican,1234535107,che@gail.co,56,1,,1962-10-17,00
+"Barrasso, John",1962-10-18,,Republican,1234535108,bar@gail.co,56,1,,1962-10-18,00
+"Roe, David P.",1962-10-19,,Republican,1234535109,roe@gail.co,47,1,,1962-10-19,1
+"Black, Diane",1962-10-20,,Republican,1234535110,bla@gail.co,47,1,,1962-10-20,6
+"DesJarlais, Scott",1962-10-21,,Republican,1234535111,des@gail.co,47,1,,1962-10-21,4
+"Cohen, Steve",1962-10-22,,Democratic,1234535112,coh@gail.co,47,1,,1962-10-22,9
+"Green, Gene",1962-10-23,,Democratic,1234535113,gre@gail.co,48,1,,1962-10-23,29
+"Conaway, K. Michael",1962-10-24,,Republican,1234535114,con@gail.co,48,1,,1962-10-24,11
+"Cruz, Ted",1962-10-25,,Republican,1234535115,cru@gail.co,48,1,,1962-10-25,0
+"Cuellar, Henry",1962-10-26,,Democratic,1234535116,cue@gail.co,48,1,,1962-10-26,28
+"Olson, Pete",1962-10-27,,Republican,1234535117,ols@gail.co,48,1,,1962-10-27,22
+"Veasey, Marc A.",1962-10-28,,Democratic,1234535118,vea@gail.co,48,1,,1962-10-28,33
+"Johnson, Eddie Bernice",1962-10-29,,Democratic,1234535119,joh@gail.co,48,1,,1962-10-29,30
+"Burgess, Michael C.",1962-10-30,,Republican,1234535120,bur@gail.co,48,1,,1962-10-30,26
+"Carter, John R.",1962-10-31,,Republican,1234535121,car@gail.co,48,1,,1962-10-31,31
+"Babin, Brian",1962-11-01,,Republican,1234535122,bab@gail.co,48,1,,1962-11-01,36
+"Gohmert, Louie",1962-11-02,,Republican,1234535123,goh@gail.co,48,1,,1962-11-02,1
+"Jackson Lee, Sheila",1962-11-03,,Democratic,1234535124,jac@gail.co,48,1,,1962-11-03,18
+"McCaul, Michael T.",1962-11-04,,Republican,1234535125,mcc@gail.co,48,1,,1962-11-04,10
+"Granger, Kay",1962-11-05,,Republican,1234535126,gra@gail.co,48,1,,1962-11-05,12
+"Thornberry, Mac",1962-11-06,,Republican,1234535127,tho@gail.co,48,1,,1962-11-06,13
+"Green, Al",1962-11-07,,Democratic,1234535128,gre@gail.co,48,1,,1962-11-07,9
+"Smith, Lamar",1962-11-08,,Republican,1234535129,smi@gail.co,48,1,,1962-11-08,21
+"Rourke, Beto",1962-11-10,,Democratic,1234535131,o&#@gail.co,48,1,,1962-11-10,16
+"Brady, Kevin",1962-11-11,,Republican,1234535132,bra@gail.co,48,1,,1962-11-11,8
+"Johnson, Sam",1962-11-12,,Republican,1234535133,joh@gail.co,48,1,,1962-11-12,3
+"Barton, Joe",1962-11-13,,Republican,1234535134,bar@gail.co,48,1,,1962-11-13,6
+"Farenthold, Blake",1962-11-14,,Republican,1234535135,far@gail.co,48,1,,1962-11-14,27
+"Culberson, John Abney",1962-11-15,,Republican,1234535136,cul@gail.co,48,1,,1962-11-15,7
+"Doggett, Lloyd",1962-11-16,,Democratic,1234535137,dog@gail.co,48,1,,1962-11-16,35
+"Sessions, Pete",1962-11-17,,Republican,1234535138,ses@gail.co,48,1,,1962-11-17,32
+"Castro, Joaquin",1962-11-18,,Democratic,1234535139,cas@gail.co,48,1,,1962-11-18,20
+"Arrington, Jodey",1962-11-19,,Republican,1234535140,arr@gail.co,48,1,,1962-11-19,19
+"Williams, Roger",1962-11-20,,Republican,1234535141,wil@gail.co,48,1,,1962-11-20,25
+"Gonzalez, Vicente",1962-11-21,,Democratic,1234535142,gon@gail.co,48,1,,1962-11-21,15
+"Poe, Ted",1962-11-22,,Republican,1234535143,poe@gail.co,48,1,,1962-11-22,2
+"Marchant, Kenny",1962-11-23,,Republican,1234535144,mar@gail.co,48,1,,1962-11-23,24
+"Vela, Filemon",1962-11-24,,Democratic,1234535145,vel@gail.co,48,1,,1962-11-24,34
+"Flores, Bill",1962-11-25,,Republican,1234535146,flo@gail.co,48,1,,1962-11-25,17
+"Hurd, Will",1962-11-26,,Republican,1234535147,hur@gail.co,48,1,,1962-11-26,23
+"Ratcliffe, John",1962-11-27,,Republican,1234535148,rat@gail.co,48,1,,1962-11-27,4
+"Bishop, Rob",1962-11-28,,Republican,1234535149,bis@gail.co,49,1,,1962-11-28,1
+"Stewart, Chris",1962-11-29,,Republican,1234535150,ste@gail.co,49,1,,1962-11-29,2
+"Hatch, Orrin G.",1962-11-30,,Republican,1234535151,hat@gail.co,49,1,,1962-11-30,0
+"Sanders, Bernard",1962-12-01,,Independent,1234535152,san@gail.co,50,1,,1962-12-01,0
+"Plaskett, Stacey E.",1962-12-02,,Democratic,1234535153,pla@gail.co,,1,,1962-12-02,0
+"Taylor, Scott",1962-12-03,,Republican,1234535154,tay@gail.co,51,1,,1962-12-03,2
+"Warner, Mark R.",1962-12-04,,Democratic,1234535155,war@gail.co,51,1,,1962-12-04,0
+"Griffith, H. Morgan",1962-12-05,,Republican,1234535156,gri@gail.co,51,1,,1962-12-05,9
+"Comstock, Barbara",1962-12-06,,Republican,1234535157,com@gail.co,51,1,,1962-12-06,10
+"McMorris Rodgers, Cathy",1962-12-07,,Republican,1234535158,mcm@gail.co,53,1,,1962-12-07,5
+"DelBene, Suzan K.",1962-12-08,,Democratic,1234535159,del@gail.co,53,1,,1962-12-08,1
+"Murray, Patty",1962-12-09,,Democratic,1234535160,mur@gail.co,53,1,,1962-12-09,0
+"Kilmer, Derek",1962-12-10,,Democratic,1234535161,kil@gail.co,53,1,,1962-12-10,6
+"Capito, Shelley Moore",1962-12-11,,Republican,1234535162,cap@gail.co,54,1,,1962-12-11,0
+"McKinley, David B.",1962-12-12,,Republican,1234535163,mck@gail.co,54,1,,1962-12-12,1
+"Manchin, Joe",1962-12-13,,Democratic,1234535164,man@gail.co,54,1,,1962-12-13,0
+"Jenkins, Evan H.",1962-12-14,,Republican,1234535165,jen@gail.co,54,1,,1962-12-14,3
+"Baldwin, Tammy",1962-12-15,,Democratic,1234535166,bal@gail.co,55,1,,1962-12-15,0
+"Pocan, Mark",1962-12-16,,Democratic,1234535167,poc@gail.co,55,1,,1962-12-16,2
+"Ryan, Paul",1962-12-17,,Republican,1234535168,rya@gail.co,55,1,,1962-12-17,1
+"Duffy, Sean P.",1962-12-18,,Republican,1234535169,duf@gail.co,55,1,,1962-12-18,7
+"Grothman, Glenn",1962-12-19,,Republican,1234535170,gro@gail.co,55,1,,1962-12-19,6
+"Gallagher, Mike",1962-12-20,,Republican,1234535171,gal@gail.co,55,1,,1962-12-20,8
+"Enzi, Michael B.",1962-12-21,,Republican,1234535172,enz@gail.co,56,1,,1962-12-21,0
+"Cheney, Liz",1962-12-22,,Republican,1234535173,che@gail.co,56,1,,1962-12-22,0
+"Barrasso, John",1962-12-23,,Republican,1234535174,bar@gail.co,56,1,,1962-12-23,0
