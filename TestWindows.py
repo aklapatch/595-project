@@ -329,7 +329,7 @@ class PageListComposition(tk.Frame):
         label = tk.Label(self, text="House Composition", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
-        results = tk.Text(self,font=('Calibri',8))
+        results = tk.Text(self,font=('Calibri',10))
 
         text_scroller = tk.Scrollbar(self,command=results.yview)
         text_scroller.pack(side='right',anchor='e',fill='y',expand=1)
