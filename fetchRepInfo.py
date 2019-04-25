@@ -150,6 +150,3 @@ if num_results[0][0] < 300:
           query_cursor(query,cursor)
           cursor.commit()
           district += 1
-          
-
-# insert it
