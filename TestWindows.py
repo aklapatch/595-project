@@ -31,7 +31,7 @@ class MenuBar(tk.Menu):
         # --- Representative Submenu ---
         representativeMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Representative", menu=representativeMenu)
-        #representativeMenu.add_command(label="List Active", command=lambda: SampleApp().show_frame("PageRepListActive"))
+        representativeMenu.add_command(label="List Active", command=lambda: SampleApp().show_frame("PageRepListActive"))
         representativeMenu.add_command(label='Search Active',command=lambda:SampleApp().show_frame("PageRepSearchActive") )
         representativeMenu.add_separator()
         representativeMenu.add_command(label="Majority Speaker", command=lambda: SampleApp().show_frame("PageRepMajSpkr"))
@@ -39,15 +39,17 @@ class MenuBar(tk.Menu):
         representativeMenu.add_separator()
         representativeMenu.add_command(label="Bio", command=lambda: SampleApp().show_frame("PageRepBio"))
         representativeMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageRepContact"))
+        representativeMenu.add_command(label="Composition",command = lambda: SampleApp().show_frame("PageListComposition") )
 
         # --- Senator Submenu ---
+        '''
         senatorMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Senator", menu=senatorMenu)
         senatorMenu.add_command(label="List Active", command=lambda: SampleApp().show_frame("PageSenListActive"))
         senatorMenu.add_separator()
         senatorMenu.add_command(label="Bio", command=lambda: SampleApp().show_frame("PageSenBio"))
         senatorMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageSenContact"))
-
+        '''
         # --- Bill Submenu ---
         billMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Bill", menu=billMenu)
@@ -61,9 +63,13 @@ def doNothing():
 
 class SampleApp(tk.Tk):
 
+    frames = {}
+    current_frame = 0
+
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
+        self.title("Ez_Gov")
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry("500x500+200+100")
 
@@ -72,21 +78,20 @@ class SampleApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
-        self.frames = {}
-        for F in (MainWindow, PageStateInfo, PageRepSearchActive,#PageRepListActive,
+        for F in (MainWindow, PageStateInfo, PageRepSearchActive,PageRepListActive,
                   PageRepMajSpkr, PageRepMinSpkr, PageRepBio, PageRepContact,
-                  PageSenListActive, PageSenBio, PageSenContact, BillSearch):
+                  PageSenListActive, PageSenBio, PageSenContact,PageListComposition, BillSearch):
             page_name = F.__name__
-            frame = F(parent=container, controller=self)
-            self.frames[page_name] = frame
-            frame.grid(row=0, column=0, sticky="nsew")
+            self.current_frame = F(parent=container, controller=self)
+            self.frames[page_name] = self.current_frame
+            self.current_frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame("MainWindow")
 
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
-        frame = self.frames[page_name]
-        frame.tkraise()
+        self.current_frame = self.frames[page_name]
+        self.current_frame.tkraise()
 
 class MainWindow(tk.Frame):
     
@@ -142,6 +147,7 @@ class MainWindow(tk.Frame):
         else:
             self.menubar = MenuBar(self, parent)
             self.controller.config(menu=self.menubar)
+            self.destroy()
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -259,6 +265,67 @@ class PageRepSearchActive(tk.Frame):
                 list.insert(1, stNotActive)
         list.pack()
 
+class PageRepListActive(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+
+        label = tk.Label(self, text="Active Representatives", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+
+        results = tk.Text(self,font=('Calibri',8))
+
+        text_scroller = tk.Scrollbar(self,command=results.yview)
+        text_scroller.pack(side='right',anchor='e',fill='y',expand=1)
+
+        results.pack(expand=1,fill='both')
+
+        results['yscrollcommand'] = text_scroller.set
+
+        results.delete(1.0,tk.END)
+        
+        sqlString = "SELECT employee.FNAME,employee.LName FROM employee WHERE employee.active=1"
+        cursor.execute(sqlString)
+        for row in cursor:
+            results.insert(1.0,row[0] + " " + row[1] + "\n")
+
+
+
+# TODO: add a button that converts to percentage
+class PageListComposition(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+
+        label = tk.Label(self, text="House Composition", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+
+        results = tk.Text(self,font=('Calibri',8))
+
+        text_scroller = tk.Scrollbar(self,command=results.yview)
+        text_scroller.pack(side='right',anchor='e',fill='y',expand=1)
+
+        results.pack(expand=1,fill='both')
+
+        results['yscrollcommand'] = text_scroller.set
+
+        results.delete(1.0,tk.END)
+        
+        sqlString = "Select count(employeeID) from employee where active = 1"
+        cursor.execute(sqlString)
+        total_reps = cursor.fetchall()
+        sqlString = "Select count(employeeID) from employee where active = 1 AND   partyAffiliation = \'R\'"
+        cursor.execute(sqlString)
+        total_repubs = cursor.fetchall()
+
+        sqlString = "Select count(employeeID) from employee where active = 1 AND   partyAffiliation = \'D\'"
+        cursor.execute(sqlString)
+        total_dems = cursor.fetchall()
+
+        results.insert(1.0,"Number of Republican Representatives is " + str(total_repubs[0][0]) + " out of "+ str(total_reps[0][0]) + "\n")
+        results.insert(1.0,"Number of Democrat Representatives is " + str(total_dems[0][0]) + " out of " + str(total_reps[0][0]) + "\n")
 
 class PageRepMajSpkr(tk.Frame):
 

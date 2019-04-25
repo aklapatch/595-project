@@ -138,14 +138,21 @@ def get_text_body(alias):
   else:
     return  get_bill_text_and_headers(alias['engrossed-amendment-body'])
 
+def get_before_colon(string_in):
+  dex = string_in.find(':')
+  if dex > -1:
+    return string_in[0:dex]
+  else:
+    return string_in
+
 def select_leg_title(alias):
   if keyin(alias, ['metadata','dublinCore','dc:title']):
-    return alias['metadata']['dublinCore']['dc:title']
+    return get_before_colon(alias['metadata']['dublinCore']['dc:title'])
 
   elif isinstance(alias['form']['official-title'],str): 
-    return alias['form']['official-title']
+    return get_before_colon(alias['form']['official-title'])
   else:
-    return alias['form']['official-title']['#text']
+    return get_before_colon(alias['form']['official-title']['#text'])
 
 def reduce_s_dict(hconres):
   outputdict = {}
