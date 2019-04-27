@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import font as tkfont
 from loginFunctions import *
 from mongoWrapper import *
+from uifunctions import *
 
 serverName= r'DESKTOP-F54A5DR\SQLEXPRESS'
 dbName= r"ProjectTEst"
@@ -37,7 +38,7 @@ class MenuBar(tk.Menu):
         representativeMenu.add_command(label="Majority Speaker", command=lambda: SampleApp().show_frame("PageRepMajSpkr"))
         representativeMenu.add_command(label="Minority Speaker", command=lambda: SampleApp().show_frame("PageRepMinSpkr"))
         representativeMenu.add_separator()
-        #representativeMenu.add_command(label="Vote", command=lambda: SampleApp().show_frame("PageRepVoteBill"))
+        representativeMenu.add_command(label="Vote", command=lambda: SampleApp().show_frame("PageRepVoteBill"))
         representativeMenu.add_command(label="Bio", command=lambda: SampleApp().show_frame("PageRepBio"))
         #representativeMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageRepContact"))
         representativeMenu.add_command(label="Composition",command = lambda: SampleApp().show_frame("PageListComposition") )
@@ -80,7 +81,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         for F in (MainWindow, PageStateInfo, PageRepSearchActive,PageRepListActive,
-                  PageRepMajSpkr, PageRepMinSpkr, PageRepBio, PageRepContact,#PageRepVoteBill,
+                  PageRepMajSpkr, PageRepMinSpkr, PageRepBio, PageRepContact,PageRepVoteBill,
                 PageListComposition, BillSearch):
             page_name = F.__name__
             self.current_frame = F(parent=container, controller=self)
@@ -303,7 +304,7 @@ class PageRepListActive(tk.Frame):
         label = tk.Label(self, text="Active Representatives", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
-        results = tk.Text(self,font=('Calibri',8))
+        results = tk.Text(self,font=('Calibri',9))
 
         text_scroller = tk.Scrollbar(self,command=results.yview)
         text_scroller.pack(side='right',anchor='e',fill='y',expand=1)
@@ -389,6 +390,7 @@ class PageRepMinSpkr(tk.Frame):
         result_label = tk.Label(self,text=(str(name[0][0]) + " " + str(name[0][1])))
         result_label.pack()
 
+# page where a user can search for a representatives vote on a bill
 class PageRepVoteBill(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -408,12 +410,12 @@ class PageRepVoteBill(tk.Frame):
         entry_2 = tk.Entry(self)
         entry_2.pack()
 
-        label_3 = tk.Label(self, text="Name of Bill: ", pady=10)
+        label_3 = tk.Label(self, text="Bill Title: ", pady=10)
         label_3.pack()
         entry_3 = tk.Entry(self)
         entry_3.pack()
 
-        results = tk.Text(self,font=('Calibri',8))
+        results = tk.Text(self,font=('Calibri',9))
 
         button1 = tk.Button(self, text="Vote Status",
                             command=lambda: self.RepQueryVote(results,entry_1.get(), entry_2.get(), entry_3.get()))
@@ -432,20 +434,38 @@ class PageRepVoteBill(tk.Frame):
     def RepQueryVote(self,result_box, first_name, last_name, bill_name):
         result_box.delete(1.0,tk.END)
 
-        # search for bills that person has voted on, instead of their vote
-        if bill_name =='':
-            sql = "select employeeID from employee where lname like \'"+last_name+"%\' and fname like\'" + first_name + "%\';"
-            cursor.execute(sql)
-            results = cursor.fetchall()
-            
-            if len(results) == 1:
-                person_id = results[0][0]
-                sql = "select billID,stat from vote where employeeID=" + str(person_id) + ";"
-                results = query_cursor(sql,cursor)
+        sql = "select employeeID from employee where lname like \'"+last_name+"%\' and fname like\'" + first_name + "%\';"
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        person_id = results[0][0]
 
-                # insert results into the results box
-                for row in results:
-                    results.insert(row,tk.END)
+        # search for bills that person has voted on, instead of thei
+        # get all the votes for a bill
+        elif first_name == '' and last_name == '':
+            sql = "select billID from vote where billID like \'%" + bill_name + "%\';"
+            bills = query_cursor(sql,cursor)
+
+            for bill in bills:
+
+                sql = "select billID,stat,employeeID from vote where billID=\'" + bill[0] + "\' order by employeeid desc;"
+                vote_results = query_cursor(sql,cursor)
+
+                sql = "select FName,LName from employee where employeeID=" 
+                for person_id in vote_results:
+                    sql += str(person_id[2]) + " "
+                    if person_id != vote_results[len(vote_results)-1]:
+                        sql += " or employeeid="
+                
+                sql += " order by employeeid desc;"
+
+                people_results = query_cursor(sql,cursor)
+
+                result_box.insert(1.0,"-----------------------------------------------------------------------------------------------\n")
+                j = 0
+                while j < len(vote_results):
+                    result_box.insert(1.0, people_results[j][0]+ " " + people_results[j][1] + " " + " voted " + vote_results[j][1] + "\n")
+                    j+=1
+                result_box.insert(1.0,"Bill Title: " + bill[0] + "\n")
 
 class PageRepBio(tk.Frame):
 
