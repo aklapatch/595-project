@@ -434,38 +434,115 @@ class PageRepVoteBill(tk.Frame):
     def RepQueryVote(self,result_box, first_name, last_name, bill_name):
         result_box.delete(1.0,tk.END)
 
-        sql = "select employeeID from employee where lname like \'"+last_name+"%\' and fname like\'" + first_name + "%\';"
-        cursor.execute(sql)
-        results = cursor.fetchall()
-        person_id = results[0][0]
+        sql = "select billid,stat,vote.employeeID,fname,lname,partyaffiliation from vote,employee where billid like \'%" + bill_name + "%\' "
+        sql += " and vote.employeeID=employee.employeeid and employee.fname like \'%" + first_name + "%\' and employee.lname like \'%"
+        sql += last_name + "%\' order by billid desc"
+        
+        composition = []
+        r_votes = { "yes" : 0, "no" : 0, "present" : 0}
+        d_votes = { "yes" : 0, "no" : 0, "present" : 0}
+        i_votes = { "yes" : 0, "no" : 0, "present" : 0}
 
-        # search for bills that person has voted on, instead of thei
-        # get all the votes for a bill
-        elif first_name == '' and last_name == '':
-            sql = "select billID from vote where billID like \'%" + bill_name + "%\';"
-            bills = query_cursor(sql,cursor)
+        bills = query_cursor(sql,cursor)
+
+        if len(bills) > 0:
+
+            curr_bill_id = bills[0][0]
+
+            result_box.insert(tk.END,"Bill Title: " + bills[0][0] + "\n")
 
             for bill in bills:
 
-                sql = "select billID,stat,employeeID from vote where billID=\'" + bill[0] + "\' order by employeeid desc;"
-                vote_results = query_cursor(sql,cursor)
+                if bill[0] != curr_bill_id:
 
-                sql = "select FName,LName from employee where employeeID=" 
-                for person_id in vote_results:
-                    sql += str(person_id[2]) + " "
-                    if person_id != vote_results[len(vote_results)-1]:
-                        sql += " or employeeid="
-                
-                sql += " order by employeeid desc;"
+                    # get results for who voted by party
+                    r_votes = { "yes" : 0, "no" : 0, "present" : 0}
+                    d_votes = { "yes" : 0, "no" : 0, "present" : 0}
+                    i_votes = { "yes" : 0, "no" : 0, "present" : 0}
 
-                people_results = query_cursor(sql,cursor)
+                    for  vote in composition:
+                        if vote[0] == 'R':
+                            if vote[1] == 'Y':
+                                r_votes['yes'] +=1
+                            if vote[1] == 'N':
+                                r_votes['no'] +=1
+                            if vote[1] == 'P':
+                                r_votes['present'] +=1
 
-                result_box.insert(1.0,"-----------------------------------------------------------------------------------------------\n")
-                j = 0
-                while j < len(vote_results):
-                    result_box.insert(1.0, people_results[j][0]+ " " + people_results[j][1] + " " + " voted " + vote_results[j][1] + "\n")
-                    j+=1
-                result_box.insert(1.0,"Bill Title: " + bill[0] + "\n")
+                        elif vote[0] == 'D':
+                            if vote[1] == 'Y':
+                                d_votes['yes'] +=1
+                            if vote[1] == 'N':
+                                d_votes['no'] +=1
+                            if vote[1] == 'P':
+                                d_votes['present'] +=1
+
+                        else:
+                            if vote[1] == 'Y':
+                                i_votes['yes'] +=1
+                            if vote[1] == 'N':
+                                i_votes['no'] +=1
+                            if vote[1] == 'P':
+                                i_votes['present'] +=1
+
+                    for key in ['yes','no','present']:
+                        if r_votes[key] > 0:
+                            result_box.insert(tk.END,"\n " + str(r_votes[key]) + " Republicans voted " + key + ". \n")
+
+                        if d_votes[key] > 0:
+                            result_box.insert(tk.END,"\n " + str(d_votes[key]) + " Democrats voted " + key + ".")
+
+                        if i_votes[key] > 0:
+                            result_box.insert(tk.END,"\n " + str(i_votes[key]) + " Independents voted " + key + ".")
+
+                    result_box.insert(tk.END,"-----------------------------------------------------------------------------------------------\n")
+                    result_box.insert(tk.END,"Bill Title: " + bill[0] + "\n")
+                    curr_bill_id = bill[0]
+                    composition = []
+
+                composition.append( (bill[5],bill[1]))
+                result_box.insert(tk.END, bill[3] + " " + bill[4] + " " + " voted " + bill[1] + "\n")
+            
+            # get results for who voted by party
+            r_votes = { "yes" : 0, "no" : 0, "present" : 0}
+            d_votes = { "yes" : 0, "no" : 0, "present" : 0}
+            i_votes = { "yes" : 0, "no" : 0, "present" : 0}
+
+            for  vote in composition:
+                if vote[0] == 'R':
+                    if vote[1] == 'Y':
+                        r_votes['yes'] +=1
+                    if vote[1] == 'N':
+                        r_votes['no'] +=1
+                    if vote[1] == 'P':
+                        r_votes['present'] +=1
+
+                elif vote[0] == 'D':
+                    if vote[1] == 'Y':
+                        d_votes['yes'] +=1
+                    if vote[1] == 'N':
+                        d_votes['no'] +=1
+                    if vote[1] == 'P':
+                        d_votes['present'] +=1
+
+                else:
+                    if vote[1] == 'Y':
+                        i_votes['yes'] +=1
+                    if vote[1] == 'N':
+                        i_votes['no'] +=1
+                    if vote[1] == 'P':
+                        i_votes['present'] +=1
+
+            for key in ['yes','no','present']:
+                if r_votes[key] > 0:
+                    result_box.insert(tk.END,"\n " + str(r_votes[key]) + " Republicans voted " + key + ".")
+
+                if d_votes[key] > 0:
+                    result_box.insert(tk.END,"\n " + str(d_votes[key]) + " Democrats voted " + key + ".")
+
+                if i_votes[key] > 0:
+                    result_box.insert(tk.END,"\n " + str(i_votes[key]) + " Independents voted " + key + ".")
+                result_box.insert(tk.END,"\n")
 
 class PageRepBio(tk.Frame):
 
