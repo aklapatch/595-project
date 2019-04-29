@@ -1,6 +1,7 @@
 import pyodbc
 import hashlib
 
+# tries to login to a database with the specified server naem and DB name with windows authentication
 def get_database_connection(server_name,db_name):
   conn_param = (
     r'Driver={SQL Server};'
@@ -39,6 +40,7 @@ def user_login(db_cursor, user_name, password):
   else:
     return False
 
+# returns true if a user exists, and false if not
 def user_exists(db_cursor, user_name):
 
   sql_str = "select userID from users where username='" + user_name + "';"
@@ -53,6 +55,8 @@ def user_exists(db_cursor, user_name):
   else:
     return False
 
+# executes the query str, which should be an sql statement, using the database 
+# cursor specified by cursor
 def query_cursor(query_str,cursor):
   try:
     cursor.execute(query_str)
@@ -60,6 +64,8 @@ def query_cursor(query_str,cursor):
   except:
     return -1
 
+# adds user to the DB with the given username and password.
+# also hashes the password for security before syncing it with the database
 def add_user(db_cursor,user_name,password):
 
   if user_exists(db_cursor,user_name):

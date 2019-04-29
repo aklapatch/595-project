@@ -4,13 +4,15 @@ from loginFunctions import *
 from mongoWrapper import *
 from uifunctions import *
 
+# the server name and database that the program connects to.
 serverName= r'DESKTOP-F54A5DR\SQLEXPRESS'
 dbName= r"ProjectTEst"
 
+# initalize the connection and the cursor
 msSQLConnection=get_database_connection(serverName, dbName)
-
 cursor = msSQLConnection.cursor()
 
+# the menubar for the program
 class MenuBar(tk.Menu):
     def __init__(self, parent, controller):
         tk.Menu.__init__(self, controller)
@@ -50,6 +52,7 @@ class MenuBar(tk.Menu):
 def doNothing():
     print("ok ok I won't...")
 
+# the apps main event loop
 class SampleApp(tk.Tk):
 
     frames = {}
@@ -58,32 +61,36 @@ class SampleApp(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
+        # set the main window settings
         self.title("Ez_Gov")
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
         self.geometry("500x500+200+100")
-
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
+        # arrange and store all frames in the main window
         for F in (MainWindow, PageStateInfo, PageRepSearchActive,PageRepListActive,
-                  PageRepMajSpkr, PageRepMinSpkr, PageRepBio, PageRepContact,PageRepVoteBill,
+                  PageRepMajSpkr, PageRepMinSpkr, PageRepBio,PageRepVoteBill,
                 PageListComposition, BillSearch):
             page_name = F.__name__
             self.current_frame = F(parent=container, controller=self)
             self.frames[page_name] = self.current_frame
             self.current_frame.grid(row=0, column=0, sticky="nsew")
 
+        # show the login window
         self.show_frame("MainWindow")
 
+    # function that brings up new frames with different functionality
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
         self.current_frame = self.frames[page_name]
         self.current_frame.tkraise()
 
+# the login frame
 class MainWindow(tk.Frame):
-    
+    # tries to add a user, and brings up a error window if it fails
     def submit_user(self,win,user_name,password):
         connection = get_database_connection(serverName,dbName)
         added = add_user(connection.cursor(),user_name,password)
@@ -101,6 +108,7 @@ class MainWindow(tk.Frame):
             close_button = tk.Button(err,text="Close",command=lambda: err.destroy())
             close_button.pack()
 
+    # brings up the add user window
     def add_user_win(self):
         win = tk.Toplevel(self)
         user_label = tk.Label(win, text="Username: ")
@@ -118,6 +126,8 @@ class MainWindow(tk.Frame):
         submit_button = tk.Button(win,text="Submit",command=lambda: self.submit_user(win, user_entry.get(),pass_entry.get()) )
         submit_button.pack()
 
+    # tries to login with the username and password specified by checking the
+    #  database for the hash and username
     def login(self,parent, username,password):
         connection = get_database_connection(serverName,dbName)
 
@@ -162,6 +172,7 @@ class MainWindow(tk.Frame):
         login_button.pack()
         add_user_button.pack()
 
+# the page that has our state info
 class PageStateInfo(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -180,6 +191,7 @@ class PageStateInfo(tk.Frame):
         entry_1.pack()
         button1.pack()
 
+    # query state info
     def StateQuery(self, txt):
         sqlString = 'SELECT count(State.SName) FROM STATE WHERE State.SName like \'' + txt + '%\''
         
@@ -202,6 +214,7 @@ class PageStateInfo(tk.Frame):
             close_button.pack()
             return
 
+        # get all the state info
         sqlString = 'SELECT State.disctrictCount FROM STATE WHERE State.SName like \'' + txt + '%\''
         cursor.execute(sqlString)
 
@@ -218,6 +231,7 @@ class PageStateInfo(tk.Frame):
 
         state_name = cursor.fetchall()
 
+        # print the info that they got from the database
         list = tk.Listbox(self, height=2, width=40)
         for row in rows:
             pop = "District Count:    "
@@ -233,6 +247,7 @@ class PageStateInfo(tk.Frame):
             list.insert(tk.END, popLabel + result)
         list.pack()
 
+# has the tool to search for which representative is active
 class PageRepSearchActive(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -261,6 +276,7 @@ class PageRepSearchActive(tk.Frame):
         #sqlString = 'SELECT State.disctrictCount FROM STATE WHERE State.SName=\'' + txt + '\''
         #cursor.execute(sqlString)
 
+    # queries if the representative was active and displays if they are or not.
     def RepQueryActive(self, txt1, txt2):
         sqlString = "SELECT employee.active FROM employee WHERE employee.FName like "+"\'"+ txt1 +"%\'" + " AND employee.LName like " + "\'"+ txt2 + "%\';"   
         result = query_cursor(sqlString,cursor)
@@ -279,9 +295,8 @@ class PageRepSearchActive(tk.Frame):
 
                 list.insert(1, active_label)
             list.pack()
-        else:
-            print("in progress")
 
+# this page pulls up and lists all active representatives
 class PageRepListActive(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -302,12 +317,13 @@ class PageRepListActive(tk.Frame):
 
         results.delete(1.0,tk.END)
         
+        # print the names of all the active representatives
         sqlString = "SELECT employee.FNAME,employee.LName FROM employee WHERE employee.active=1"
         cursor.execute(sqlString)
         for row in cursor:
             results.insert(1.0,row[0] + " " + row[1] + "\n")
 
-# TODO: add a button that converts to percentage
+# lists the number of members of each political party
 class PageListComposition(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -328,6 +344,7 @@ class PageListComposition(tk.Frame):
 
         results.delete(1.0,tk.END)
         
+        # get all the represetnatives by parties
         sqlString = "Select count(employeeID) from employee where active=1"
         cursor.execute(sqlString)
         total_reps = cursor.fetchall()
@@ -348,6 +365,7 @@ class PageListComposition(tk.Frame):
         results.insert(1.0,"Number of Democrat Representatives is " + str(total_dems[0][0]) + " out of " + str(total_reps[0][0]) + "\n")
         results.insert(1.0,"Number of Independent Representatives is " + str(total_ind[0][0]) + " out of " + str(total_reps[0][0]) + "\n")
 
+# displays the majority speaker if that is set
 class PageRepMajSpkr(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -363,6 +381,7 @@ class PageRepMajSpkr(tk.Frame):
         result_label = tk.Label(self,text=(str(name[0][0]) + " " + str(name[0][1])) )
         result_label.pack()
 
+# displays the minority speaker if that is set
 class PageRepMinSpkr(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -439,7 +458,8 @@ class PageRepVoteBill(tk.Frame):
             result_box.insert(tk.END,"Bill Title: " + bills[0][0] + "\n")
 
             for bill in bills:
-
+                
+                # what to do if a new bill comes up
                 if bill[0] != curr_bill_id:
 
                     # get results for who voted by party
@@ -447,6 +467,7 @@ class PageRepVoteBill(tk.Frame):
                     d_votes = { "yes" : 0, "no" : 0, "present" : 0}
                     i_votes = { "yes" : 0, "no" : 0, "present" : 0}
 
+                    # sort vote by party composition
                     for  vote in composition:
                         if vote[0] == 'R':
                             if vote[1] == 'Y':
@@ -495,6 +516,8 @@ class PageRepVoteBill(tk.Frame):
             d_votes = { "yes" : 0, "no" : 0, "present" : 0}
             i_votes = { "yes" : 0, "no" : 0, "present" : 0}
 
+            # this is for the last vote, the previous loop does not account 
+            # for the last loop
             for  vote in composition:
                 if vote[0] == 'R':
                     if vote[1] == 'Y':
@@ -531,6 +554,7 @@ class PageRepVoteBill(tk.Frame):
                     result_box.insert(tk.END,"\n " + str(i_votes[key]) + " Independents voted " + key + ".")
                 result_box.insert(tk.END,"\n")
 
+# lists the contact information for a representative
 class PageRepBio(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -557,8 +581,8 @@ class PageRepBio(tk.Frame):
                             command=lambda: self.RepQueryActive(text_box,entry_1.get(), entry_2.get()))
 
         button1.pack()
-        
 
+    # Get all the information on a representative and print it in a text box.
     def RepQueryActive(self,text_list, txt1, txt2):
         text_list.delete(0,tk.END)
         sqlString = "SELECT employee.active FROM employee WHERE employee.FName like "+"\'"+ txt1 +"%\'" + " AND employee.LName like " + "\'"+ txt2 + "%\';"   
@@ -582,45 +606,7 @@ class PageRepBio(tk.Frame):
         else:
             print("Could not find a representative with that entry combination")
 
-class PageRepContact(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-
-        label = tk.Label(self, text="Representative's Contact Information", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-
-
-class PageSenListActive(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-
-        label = tk.Label(self, text="Active Senators", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-
-
-class PageSenBio(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-
-        label = tk.Label(self, text="Senator's Bio", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-
-
-class PageSenContact(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-
-        label = tk.Label(self, text="Senator's Contact Information", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-
+# the page where a user can search for bills
 class BillSearch(tk.Frame):
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
@@ -699,7 +685,7 @@ def getBillTitles(text_box,bill_title,bill_status,bill_sponsor,bill_date):
         text_box.insert(1.0,bill['title'])
         text_box.insert(1.0,'\n')
 
-
+# starts the main app event loop
 if __name__ == "__main__":
     app = SampleApp()
     app.geometry("500x500+200+100")
