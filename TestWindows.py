@@ -10,9 +10,6 @@ dbName= r"ProjectTEst"
 msSQLConnection=get_database_connection(serverName, dbName)
 
 cursor = msSQLConnection.cursor()
-#cursor.execute('SELECT * FROM STATE')
-#for row in cursor:
-#    print(row)
 
 class MenuBar(tk.Menu):
     def __init__(self, parent, controller):
@@ -40,18 +37,8 @@ class MenuBar(tk.Menu):
         representativeMenu.add_separator()
         representativeMenu.add_command(label="Vote", command=lambda: SampleApp().show_frame("PageRepVoteBill"))
         representativeMenu.add_command(label="Bio", command=lambda: SampleApp().show_frame("PageRepBio"))
-        #representativeMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageRepContact"))
         representativeMenu.add_command(label="Composition",command = lambda: SampleApp().show_frame("PageListComposition") )
 
-        # --- Senator Submenu ---
-        '''
-        senatorMenu = tk.Menu(self, tearoff=0)
-        self.add_cascade(label="Senator", menu=senatorMenu)
-        senatorMenu.add_command(label="List Active", command=lambda: SampleApp().show_frame("PageSenListActive"))
-        senatorMenu.add_separator()
-        senatorMenu.add_command(label="Bio", command=lambda: SampleApp().show_frame("PageSenBio"))
-        senatorMenu.add_command(label="Contact", command=lambda: SampleApp().show_frame("PageSenContact"))
-        '''
         # --- Bill Submenu ---
         billMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Bill", menu=billMenu)

@@ -1,18 +1,13 @@
 import requests
+import json
 from loginFunctions import *
+import shutil
 
 serverName= r'DESKTOP-F54A5DR\SQLEXPRESS'
 dbName= r"ProjectTEst"
 
 msSQLConnection=get_database_connection(serverName, dbName)
 cursor = msSQLConnection.cursor()
-
-def query_cursor(query_str,cursor):
-  try:
-    cursor.execute(query_str)
-    return cursor.fetchall()
-  except:
-    return -1
 
 '''
 need:
@@ -27,6 +22,7 @@ need:
 * majority or minority speaker
 '''
 
+# get all the string digits from the string argument.
 def getNumfromstr(string):
   output = ""
   for char in string:
@@ -35,6 +31,7 @@ def getNumfromstr(string):
 
   return output
 
+# reduce the google api's return data structure to the data we need
 def reduceAPIDictCongress(official,district):
   output_dict = {}
 
@@ -60,17 +57,20 @@ def reduceAPIDictCongress(official,district):
 
   return output_dict
 
-# google civic api key
-# AIzaSyDJhTq7lWewiNgrT7TN10v8osTPN5Lk83M
-key = "AIzaSyDJhTq7lWewiNgrT7TN10v8osTPN5Lk83M"
+# google civic api key 
+# I removed mine for security
+key = ""
 base_url="https://www.googleapis.com/civicinfo/v2/representatives/"
 ocd_id_start="ocd-division%2Fcountry%3Aus%2Fstate%3A"
 ocd_id_end="?levels=country&recursive=true&roles=legislatorLowerBody&key=" + key
 
+# state abbreviations
 states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID',
  'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO',
  'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA',
  'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI','WY' ]
+
+# full state names
 full_sates= ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut',
 'Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky',
 'Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri',
@@ -78,16 +78,17 @@ full_sates= ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Co
 'North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota',
 'Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
 
+# state populations
 populations = [4858979,	738432,	6828065,	2978204,	39144818,	5456574,	3590886,	945934,	20271272,
 	10214860,	1431603,	1654930,	12859995,	6619680,	3123899,	2911641,	4425092,	4670724,	1329328,
 	6006401,	6794422,	9922576,	5489594,	2992333,	6083672,	1032949,	1896190,	2890845,	1330608,
 	8958013,	2085109,	19795791,	10042802,	756927,	11613423,	3911338,	4028977,	12802503,	1056298,
 	4896146,	858469,	6600299,	27469114,	2995919,	626042,	8382993,	7170351,	1844128,	5771337,	586107 ]
 
+# number of districts for each state
 districts = [ 	7,	1, 	9, 	4, 	53, 	7, 	5, 	1, 	27, 	14, 	2, 	2, 	18, 	9, 	4,	4, 	6, 	6, 	2, 	8, 	9,
  	14,  8, 	4, 	8, 	1, 	3, 	4, 	2, 	12, 	3, 	27, 	13, 	1, 	16, 	5, 	5, 	18, 	2, 	7, 	1, 	9, 	36, 	4,
  	1, 	11, 	10, 	3, 	8, 	1]
-
 
 # check state number
 num_results = query_cursor("select count(stateID) from State",cursor)
@@ -96,7 +97,7 @@ if num_results[0][0] < 50:
   # delete sates before adding the again
   query_cursor("delete from State",cursor)
 
-  # insert states
+  # insert states into the database
   i = 0
   while i < len(full_sates):
     query = "insert into state values(" + str(i) + ",\'" + full_sates[i] + "\'," + str(populations[i]) + "," +str(districts[i]) + ");"
@@ -122,8 +123,11 @@ if num_results[0][0] < 300:
     req_urls[i] = base_url + ocd_id_start + states[i] + ocd_id_end
     i+=1
 
+  # init arrays for representatives
   reps = [None]*500
 
+  # this loop gets the url's for each state and retrieves data for each state
+  # it also puts all the representatives for each state into the database
   id = 0
   i = -1
   for url in req_urls:
@@ -139,14 +143,29 @@ if num_results[0][0] < 300:
         output_dict = reduceAPIDictCongress(official,district)
 
         if isinstance(output_dict,dict):
+
+          # save the info to a file
+          with open('repinfo/' + output_dict['fname'] + '_' + output_dict['lname']+ '.json','w') as outfile:
+            json.dump(output_dict,outfile)
+
           #                                         id                    lname                           fname                  dob  gender  party               #phonenum, email
           query = 'insert into employee values(' + str(id) + ',\'' + output_dict['lname'] + '\',\'' + output_dict['fname'] + '\',null,null,\''+output_dict['party'] + '\',\'' + output_dict['phone'] + '\',\'\','
           query_end = str(i) + "," + str(1) + ',\'Representative\',null);'
           query_cursor(query+query_end,cursor)
           cursor.commit()
 
-          # make the representative
-          query = 'insert into representative values(\'' +str(district) + '\',0,0,' +str(id) + ');'
+          if output_dict['fname'].lower() == 'nancy' and output_dict['lname'].lower() == 'pelosi':
+
+            # set nancy pelosi to be the current majority speaker
+            query = 'insert into representative values(\'' +str(district) + '\',1,0,' +str(id) + ');'
+            
+            # set kevin mccarthy to be the current minority speaker
+          elif output_dict['fname'].lower() == 'kevin' and output_dict['lname'].lower() == 'mccarthy':
+            query = 'insert into representative values(\'' +str(district) + '\',0,1,' +str(id) + ');'
+          else:
+            # insert normal representative
+            query = 'insert into representative values(\'' +str(district) + '\',0,0,' +str(id) + ');'
+
           query_cursor(query,cursor)
           cursor.commit()
           district += 1
